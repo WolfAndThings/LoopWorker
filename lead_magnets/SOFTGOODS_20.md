@@ -1,12 +1,71 @@
-# Soft Goods — 20 Prompts
-## Black, Cream, Tan. Gen Z Energy. Every Shot Branded.
+# Soft Goods — 20 ChatGPT Prompts
+## A Complete AI Brand Asset Pack
 
 ---
 
-## STYLE LOCK
+## BRAND DNA
+
+### Brand Name
+**Soft Goods**
+
+### Brand Type
+Minimal basics brand — quality essentials, clean design, thoughtful details
+
+### Color Palette
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Black | #1A1A1A | Text, logo, contrast pieces |
+| Cream | #FAF9F6 | Primary — tees, backgrounds |
+| Tan | #D2B48C | Secondary — jackets, earth tones |
+| White | #FFFFFF | Backgrounds, clean space |
+
+### Photography Mood
+- **Clean** — minimal, bright, airy
+- **Quality** — you can see the fabric
+- **Thoughtful** — details matter
+- **Effortless** — not trying too hard
+
+### Photography Style
+- Soft natural light, minimal shadows
+- Bright and airy, not dark
+- Sharp focus, low grain
+- Clean compositions, white space
+- 4:5 vertical ratio for social
+
+### Cast/People
+- Gen Z: late teens to mid-20s
+- Natural, relaxed postures
+- Mix of basics and thrifted
+- Not over-styled, effortless
+
+### Logo Placement
+The "Soft Goods" logo appears on:
+- Collar tags (woven label)
+- Hang tags
+- Shopping bags
+- Tissue paper stickers
+- Packaging boxes
+- Small embroidered details
+- Buttons (embossed)
+
+---
+
+## HOW TO USE WITH CHATGPT
+
+Start your session with this style lock:
 
 ```
-For all images: On-camera flash, harsh shadows, 35mm film grain, raw and gritty. Vertical 4:5 frame. Soft Goods branding visible in every shot — logo on tags, labels, packaging, hang tags. Black, cream, tan brand colors. Gen Z cast — late teens to mid-20s, thrifted fits mixed with basics, experimental style.
+I'm creating images for a minimal basics clothing brand called "Soft Goods."
+
+Brand DNA:
+- Colors: Black (#1A1A1A), cream (#FAF9F6), tan (#D2B48C), white
+- Photography: Clean, bright, minimal, lots of white space
+- Lighting: Soft natural light, minimal shadows
+- Mood: Quality, effortless, thoughtful, not over-styled
+- The "Soft Goods" logo should be visible on tags, labels, packaging, hang tags
+- Cast: Gen Z, natural postures, relaxed, not trying too hard
+
+Keep this style consistent across all images I request.
 ```
 
 ---
@@ -15,118 +74,150 @@ For all images: On-camera flash, harsh shadows, 35mm film grain, raw and gritty.
 
 **1. THE TEE**
 ```
-Soft Goods cream t-shirt laid flat on concrete floor. Simple logo tag visible at collar. Shirt slightly wrinkled, not pressed. Flash creating harsh shadow behind.
+Create an image of a cream-colored Soft Goods t-shirt laid flat on a white surface. The woven logo tag is visible at the collar — black text on cream fabric reading "Soft Goods." The shirt has slight natural wrinkles showing it's real fabric, not CGI. Clean, bright, minimal.
 
-4:5 vertical — shirt fills frame, logo tag readable at top.
+Colors: Cream tee, black logo tag, white background
+Mood: Simple, quality, the perfect basic
+Style: Flat lay product, tag visible, bright and clean, 4:5 vertical
 ```
 
 **2. THE FOLD**
 ```
-Stack of Soft Goods t-shirts on wooden shelf — cream, black, tan. Edges slightly uneven, real stack not styled. Logo tags visible peeking from each collar.
+A stack of Soft Goods t-shirts on a white shelf. Three shirts — cream, black, and tan — neatly folded. Logo tags visible peeking from each collar. Bright, airy, considered arrangement.
 
-4:5 vertical — stack fills frame, tags visible, shelf texture.
+Colors: Cream/black/tan stack, black logo tags visible
+Mood: Organized, range, the collection
+Style: Stacked product shot, tags visible, 4:5 vertical
 ```
 
 **3. THE TAG**
 ```
-Close-up of Soft Goods woven label inside collar of black shirt. Logo and size visible. Fabric texture around tag. Flash on label details.
+Extreme close-up of the Soft Goods woven label inside a collar. "Soft Goods" in black text, size visible below. Crisp fabric texture around it. Sharp focus on the details.
 
-4:5 vertical — macro on tag, fabric fills rest of frame.
+Colors: Cream fabric, black tag text
+Mood: Quality details, the small things, craftsmanship
+Style: Macro tag shot, readable, 4:5 vertical
 ```
 
 **4. THE HANG**
 ```
-Soft Goods tan work jacket on wooden hanger against white wall. Hang tag dangling — logo and price visible. Jacket slightly rumpled, lived-in already.
+A Soft Goods tan work jacket on a white wooden hanger against a white wall. Hang tag dangling from the collar — cream tag with black "Soft Goods" logo and price visible. Simple, clean, considered presentation.
 
-4:5 vertical — jacket and hang tag centered, wall texture.
+Colors: Tan jacket, cream hang tag, black logo text
+Mood: Ready to buy, retail moment, clean display
+Style: Hanging product, tag visible, 4:5 vertical
 ```
 
 **5. THE POCKET**
 ```
-Close-up of Soft Goods jacket pocket — cream canvas, contrast stitching. Small logo patch sewn above pocket. Hand entering pocket, silver rings visible.
+Close-up of a Soft Goods jacket pocket. Cream canvas fabric, clean stitching visible. Small black "Soft Goods" logo patch sewn above the pocket. Crisp detail, bright natural light.
 
-4:5 vertical — pocket and patch centered, hand adding life.
+Colors: Cream canvas, black logo patch
+Mood: The detail, quality construction, small branding
+Style: Detail macro, patch logo visible, 4:5 vertical
 ```
 
 **6. THE FLAT LAY**
 ```
-Soft Goods outfit laid on concrete — black work pants, cream tee, tan jacket, worn boots at bottom. All slightly overlapping, not perfect grid. Tags visible.
+A complete Soft Goods outfit laid flat on white — black work pants, cream tee, tan jacket. Clean grid layout with considered spacing between each piece. All tags visible. Bright, editorial styling.
 
-4:5 vertical — full outfit fills frame, branded pieces visible.
+Colors: Black/cream/tan outfit, black tags throughout
+Mood: The full look, coordination, minimal wardrobe
+Style: Grid flat lay, all logos visible, 4:5 vertical
 ```
 
 **7. THE DENIM**
 ```
-Soft Goods raw denim jeans laid flat — logo patch on back waistband. Unwashed, stiff, creases from folding. Flash on texture.
+Soft Goods raw denim jeans laid flat on white surface. Black "Soft Goods" leather logo patch visible on the back waistband. Clean, new, unworn. Bright, even lighting showing the denim texture.
 
-4:5 vertical — jeans fill frame, logo patch visible at top.
+Colors: Indigo denim, black leather logo patch
+Mood: New denim, quality, ready to wear in
+Style: Flat lay, logo patch visible at waistband, 4:5 vertical
 ```
 
 **8. THE ROLL**
 ```
-Soft Goods sleeve being rolled up on model's arm — cream oxford shirt, small logo embroidered on cuff. Forearm tattoo visible. Real moment.
+A model's arm rolling up the sleeve of a cream Soft Goods oxford shirt. Small "Soft Goods" logo embroidered in black on the cuff. Clean skin, simple jewelry (one thin ring). Bright, natural light.
 
-4:5 vertical — arm and sleeve fill frame, logo on cuff visible.
+Colors: Cream shirt, black embroidered logo, skin tones
+Mood: Styling moment, the details, getting dressed
+Style: Arm/sleeve detail, logo on cuff visible, 4:5 vertical
 ```
 
 **9. THE BOOTS**
 ```
-Worn leather boots on concrete beside Soft Goods shopping bag — cream bag, black logo printed. Boots scuffed, real wear. Bag slightly crumpled.
+Clean leather boots on a white surface next to a Soft Goods shopping bag. Cream paper bag with black "Soft Goods" logo printed on it. New boots, minimal styling. The purchase moment.
 
-4:5 vertical — boots and bag together, branding on bag visible.
+Colors: Brown boots, cream bag, black logo
+Mood: Fresh purchase, new goods, taking them home
+Style: Product pair, bag logo visible, 4:5 vertical
 ```
 
-**10. THE DETAIL**
+**10. THE BUTTON**
 ```
-Close-up of Soft Goods button on tan work jacket — brass, logo embossed. Thread visible, buttonhole slightly worn. Flash on metal surface.
+Extreme close-up of a brass button on a Soft Goods tan jacket. "Soft Goods" embossed into the button surface. Clean thread, precise buttonhole. The details that matter.
 
-4:5 vertical — macro on button, fabric texture around it.
+Colors: Brass button, tan fabric, embossed logo
+Mood: Craft, quality details, considered design
+Style: Macro button shot, logo embossed visible, 4:5 vertical
 ```
 
 **11. THE RACK**
 ```
-Soft Goods retail rack — mixed pieces on wooden hangers. Tags visible on each item. Simple, clean, not overstocked. Flash illuminating rack.
+A Soft Goods retail rack with pieces on white wooden hangers. Hang tags visible on each item. Clean, minimal, not overstocked. Bright, airy store environment.
 
-4:5 vertical — rack fills frame, multiple hang tags visible.
+Colors: Mixed tones, cream hang tags with black logos
+Mood: Retail space, curated selection, browse
+Style: Rack shot, tags visible throughout, 4:5 vertical
 ```
 
 **12. THE BAG**
 ```
-Soft Goods shopping bag on floor — cream with black logo, rope handles. Receipt peeking out top. Someone's feet in worn sneakers beside it.
+A Soft Goods shopping bag on a white floor. Cream paper bag with black "Soft Goods" logo, rope handles. Clean, considered design. Minimal context, bag as hero.
 
-4:5 vertical — bag centered, feet adding context at edge.
+Colors: Cream bag, black logo, white floor
+Mood: The takeaway, purchase complete, brand moment
+Style: Bag hero shot, logo prominent, 4:5 vertical
 ```
 
 ---
 
-## PEOPLE SHOTS (Gen Z)
+## PEOPLE SHOTS (Gen Z Cast)
 
 **13. THE FIT**
 ```
-Gen Z person standing against concrete wall in full Soft Goods outfit — tan jacket, cream tee, black pants. Hands in pockets, looking off camera. Curtain bangs, small tattoos visible. Not posing hard.
+A Gen Z person standing against a white wall in full Soft Goods outfit — tan jacket, cream tee visible underneath, black pants. Relaxed stance, not posing hard. Clean styling, simple jewelry. Bright natural light from the side.
 
-4:5 vertical — full body, wall texture, natural stance.
+Colors: Tan/cream/black outfit, white wall
+Mood: Effortless, natural, not trying too hard
+Style: Full body on white, clean minimal, 4:5 vertical
 ```
 
 **14. THE TRY ON**
 ```
-Gen Z person in fitting room mirror, trying on Soft Goods jacket. Tags still on, checking fit. Phone in other hand for mirror pic. Messy fitting room context.
+A Gen Z person in a bright fitting room mirror, trying on a Soft Goods jacket. Tags still on — hang tag with logo visible dangling. Checking the fit, natural expression. Clean mirror, white walls.
 
-4:5 vertical — mirror reflection, tags with branding visible.
+Colors: Tan jacket, cream tag with black logo
+Mood: The fitting room moment, considering, trying
+Style: Mirror reflection, tags visible, 4:5 vertical
 ```
 
 **15. THE LAYER**
 ```
-Gen Z person pulling Soft Goods hoodie over head — mid-motion, face hidden by fabric. Cream hoodie, logo visible on chest. Arms raised, caught in the act.
+A Gen Z person mid-motion pulling a Soft Goods cream hoodie over their head. Arms up, hoodie coming down, black "Soft Goods" logo on the chest visible. Clean background, bright light.
 
-4:5 vertical — pulling-on moment, logo visible on chest.
+Colors: Cream hoodie, black chest logo
+Mood: Getting dressed, motion, the pull-on
+Style: Motion shot, logo visible, 4:5 vertical
 ```
 
 **16. THE SHOP**
 ```
-Two Gen Z friends in Soft Goods store — one holding jacket up to other, checking it out. Retail context, racks behind them. Real shopping moment, flash on faces.
+Two Gen Z friends in a Soft Goods store. One holding a jacket up, showing the other. Bright retail space with white walls and wooden fixtures. Real shopping moment, natural interaction.
 
-4:5 vertical — friends and jacket centered, store context.
+Colors: Clean store, warm wood, neutral clothing tones
+Mood: Shopping together, opinions, the browse
+Style: Candid retail shot, brand environment, 4:5 vertical
 ```
 
 ---
@@ -135,32 +226,50 @@ Two Gen Z friends in Soft Goods store — one holding jacket up to other, checki
 
 **17. THE WRAP**
 ```
-Soft Goods item wrapped in tissue paper in branded box — cream box, black logo on lid. Tissue being pulled back, fabric visible underneath.
+A Soft Goods item wrapped in tissue paper inside a branded box. Cream box with black "Soft Goods" logo on the lid. Tissue being pulled back, fabric visible underneath. The unboxing moment.
 
-4:5 vertical — box and logo fills frame, unwrapping moment.
+Colors: Cream box, black logo, white tissue
+Mood: Unboxing, reveal, opening the package
+Style: Unboxing shot, box logo visible, 4:5 vertical
 ```
 
 **18. THE STICKER**
 ```
-Soft Goods round logo sticker sealing tissue wrap. Black on cream, edges clean. Flash on sticker surface.
+A round Soft Goods logo sticker sealing tissue paper wrap. Black logo on cream sticker. Edges precise, clean application. The final seal.
 
-4:5 vertical — macro on sticker, tissue texture around.
+Colors: Cream sticker, black logo
+Mood: Sealed, considered, the finishing touch
+Style: Macro sticker shot, clean and sharp, 4:5 vertical
 ```
 
 **19. THE RECEIPT**
 ```
-Soft Goods receipt on counter — minimal design, logo at top. Items listed, total visible. Pen beside it, shopping bag edge in frame.
+A Soft Goods receipt on a white counter. Minimal design with "Soft Goods" logo at the top. Items listed in clean typography. Simple, considered even in the details.
 
-4:5 vertical — receipt fills frame, branding at top.
+Colors: White receipt, black text and logo
+Mood: The paper trail, clean design everywhere
+Style: Receipt flat lay, logo at top, 4:5 vertical
 ```
 
 **20. THE HANG TAG**
 ```
-Soft Goods hang tag on string — black card, cream logo. Price and material info visible. Hanging from jacket zipper. Flash on card surface.
+A Soft Goods hang tag on string. Black card with cream "Soft Goods" logo. Price and material info visible in small text. The tag that comes with every piece.
 
-4:5 vertical — hang tag centered, jacket context behind.
+Colors: Black tag, cream logo text
+Mood: Information, price, the tag before you cut it off
+Style: Tag close-up, logo and details visible, 4:5 vertical
 ```
 
 ---
 
-*Soft Goods. 20 shots. Every frame branded.*
+## TIPS FOR CHATGPT
+
+1. **Start with the style lock** at the beginning of your session
+2. **Reference previous images** — say "same style as the last one but..."
+3. **Iterate** — if something's not right, say "brighter" or "more white space"
+4. **Be specific about the logo** — always mention "Soft Goods" by name
+5. **Call out the minimal vibe** — "clean, bright, minimal, airy"
+
+---
+
+*Soft Goods. 20 shots. Clean. Minimal. Every frame branded.*

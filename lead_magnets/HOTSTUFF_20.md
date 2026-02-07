@@ -1,12 +1,72 @@
-# Hot Stuff Cafe — 20 Prompts
-## Orange, Cream, Black. Gen Z Energy. Every Shot Branded.
+# Hot Stuff Cafe — 20 ChatGPT Prompts
+## A Complete AI Brand Asset Pack
 
 ---
 
-## STYLE LOCK
+## BRAND DNA
+
+### Brand Name
+**Hot Stuff Cafe**
+
+### Brand Type
+Gen Z coffee shop — cozy, vibey, community-focused
+
+### Color Palette
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Burnt Orange | #E85D04 | Primary — logo, accents, straws |
+| Cream | #FDF6E3 | Backgrounds, cups, totes |
+| Black | #1A1A1A | Text, contrast, lids |
+| Warm Wood | #8B6914 | Counters, tables, environment |
+
+### Photography Mood
+- **Warm** — everything feels golden and inviting
+- **Cozy** — like your favorite corner spot
+- **Real** — slightly imperfect, not over-styled
+- **Morning energy** — that first-cup-of-the-day feeling
+
+### Photography Style
+- 35mm film aesthetic, Kodak Portra color tones
+- Soft natural window light, golden morning hour
+- Slight film grain, warm color grade
+- Shallow depth of field
+- 4:5 vertical ratio for social
+
+### Cast/People
+- Gen Z: late teens to mid-20s
+- Diverse, inclusive casting
+- Thrifted fits, oversized sweaters, gold jewelry
+- Relaxed, not performative
+
+### Logo Placement
+The "Hot Stuff" or "Hot Stuff Cafe" logo appears on:
+- Cups (clear iced + ceramic hot)
+- Paper bags
+- Napkins (stamped)
+- Cup sleeves
+- Window signage
+- Menu boards
+- Tote bags
+- Stickers
+
+---
+
+## HOW TO USE WITH CHATGPT
+
+Start your session with this style lock:
 
 ```
-For all images: On-camera flash, harsh shadows, 35mm film grain, raw and gritty. Vertical 4:5 frame. Hot Stuff Cafe branding visible in every shot — logo on cups, bags, signage, stickers. Orange, cream, black brand colors. Gen Z cast — late teens to mid-20s, thrifted fits, experimental style.
+I'm creating images for a coffee shop brand called "Hot Stuff Cafe."
+
+Brand DNA:
+- Colors: Burnt orange (#E85D04), cream (#FDF6E3), black (#1A1A1A)
+- Photography: Warm 35mm film look, Kodak Portra vibes
+- Lighting: Soft golden morning light, natural window light
+- Mood: Cozy, warm, real, morning energy
+- The "Hot Stuff" logo should be visible on cups, bags, signage, or stickers
+- Cast: Gen Z (late teens to mid-20s), diverse, thrifted aesthetic
+
+Keep this style consistent across all images I request.
 ```
 
 ---
@@ -15,118 +75,150 @@ For all images: On-camera flash, harsh shadows, 35mm film grain, raw and gritty.
 
 **1. THE CUP**
 ```
-Hot Stuff Cafe iced coffee in branded clear cup — orange and black logo facing camera. Condensation dripping down sides. Black lid, orange straw. Sitting on worn counter.
+Create an image of an iced coffee in a clear plastic cup with condensation dripping down the sides. The cup has a "Hot Stuff Cafe" logo in burnt orange and black facing the camera. There's a black lid and orange straw. It's sitting on a worn wooden counter with warm morning light streaming in from a window on the left.
 
-4:5 vertical — cup centered, logo sharp, flash on condensation.
+Colors: Orange logo on clear cup, black lid, warm wood tones
+Mood: Fresh, inviting, that first iced coffee of the day
+Style: Warm 35mm film look, shallow depth of field, 4:5 vertical ratio
 ```
 
 **2. THE POUR**
 ```
-Espresso pouring into Hot Stuff branded cup — logo visible on ceramic. Stream of espresso mid-pour. Steam rising. Drips on counter.
+Show espresso being poured into a cream-colored ceramic coffee cup that has the "Hot Stuff" logo in orange on it. Capture the stream of espresso mid-pour with steam rising. A barista's hands are visible doing the pour. The scene has warm morning light with soft shadows.
 
-4:5 vertical — cup with logo bottom third, pour action fills middle.
+Colors: Cream ceramic, orange logo, rich espresso brown
+Mood: Crafted, intentional, the ritual of making coffee
+Style: Warm film tones, logo clearly visible, 4:5 vertical
 ```
 
 **3. THE DRIP**
 ```
-Close-up of iced coffee dripping down side of Hot Stuff cup. Logo visible through condensation. Ice melting, coffee separating slightly.
+Create a close-up macro shot of condensation dripping down the side of an iced coffee cup. The "Hot Stuff Cafe" logo in orange is visible through the water droplets. There's warm backlight creating a glow effect. Very shallow depth of field so only the droplets and logo are sharp.
 
-4:5 vertical — macro on logo and drip texture.
+Colors: Orange logo glowing through condensation, warm golden backlight
+Mood: Refreshing, detail-oriented, sensory
+Style: Intimate macro photography, warm golden tones, 4:5 vertical
 ```
 
 **4. THE BEANS**
 ```
-Hot Stuff Cafe coffee bag — orange and black branded packaging, ripped open at top. Beans spilling onto concrete. Scoop buried in bag.
+Show a coffee bag with "Hot Stuff Cafe" branding — cream colored bag with orange and black logo — open at the top with whole beans spilling out onto a butcher block counter. Morning window light is hitting the scene, making it feel warm and inviting.
 
-4:5 vertical — bag fills frame, logo prominent, beans scattered.
+Colors: Cream bag, orange/black logo, dark roasted beans, warm wood
+Mood: Origin story, quality ingredients, artisan
+Style: Product photography with lifestyle feel, logo prominent, 4:5 vertical
 ```
 
 **5. THE PASTRY**
 ```
-Croissant on Hot Stuff branded napkin — logo stamped in orange. Flaky layers exposed, one bite taken. Coffee cup edge visible in frame.
+A fresh croissant with flaky golden layers sitting on a cream napkin that has the "Hot Stuff Cafe" logo stamped on it in orange. Morning light is catching the pastry texture. There's a coffee cup softly blurred in the background.
 
-4:5 vertical — napkin with logo bottom, pastry fills middle.
+Colors: Golden pastry, cream napkin, orange stamped logo
+Mood: Indulgent, simple pleasures, morning treat
+Style: Appetizing food photography, warm natural light, logo visible, 4:5 vertical
 ```
 
 **6. THE LATTE**
 ```
-Latte art in Hot Stuff ceramic mug — simple leaf, slightly imperfect. Logo visible on mug side. Worn wooden table, morning light mixed with flash.
+A latte with leaf pattern art in a cream ceramic mug that has the "Hot Stuff" logo in orange on the side. The latte art should look hand-poured, slightly imperfect. The mug is on a worn wooden table with morning sun streaming in. Cozy cafe vibes.
 
-4:5 vertical — mug with logo centered, art visible from above angle.
+Colors: Cream mug, orange logo, caramel latte tones, warm wood
+Mood: Cozy, handcrafted, the perfect morning moment
+Style: Lifestyle coffee photography, logo visible on mug, 4:5 vertical
 ```
 
 **7. THE COUNTER**
 ```
-Hot Stuff Cafe counter from customer POV. Espresso machine, stacked cups with logos facing out. Pastry case, menu board with orange signage. Barista's hands in motion, blurred.
+Show the view from a customer's perspective at the Hot Stuff Cafe counter. There's an espresso machine, stacked cream cups with the orange "Hot Stuff" logo facing outward, a glowing pastry case, and a menu board with orange signage and the logo. Morning light is flooding in from windows.
 
-4:5 vertical — branded cups and signage visible throughout.
+Colors: Orange accents throughout, cream cups, warm wood, black espresso machine
+Mood: Anticipation, the full experience, welcoming
+Style: Environmental shot, branded experience, warm atmosphere, 4:5 vertical
 ```
 
 **8. THE ICED ROW**
 ```
-Three iced coffees lined up on counter — different sizes, all Hot Stuff branded cups. Condensation on each. Straws at different angles.
+Three iced coffees of different sizes lined up on a sunlit counter. All have "Hot Stuff Cafe" branded clear cups with the orange and black logo facing the camera. Condensation is catching the light. Orange straws in each. Golden hour morning vibes.
 
-4:5 vertical — lineup fills frame, logos facing camera.
+Colors: Clear cups, orange logos and straws, black lids, golden light
+Mood: Options, abundance, satisfying lineup
+Style: Product lineup shot, all logos visible, warm tones, 4:5 vertical
 ```
 
 **9. THE FOAM**
 ```
-Macro of coffee foam surface in Hot Stuff mug. Logo visible on rim. Bubbles, crema texture, spoon resting on edge.
+A macro shot looking down at the surface of latte foam in a "Hot Stuff" branded cream mug. The orange logo on the rim of the mug is visible at the top of frame. You can see the crema texture with morning light reflecting off it. A spoon rests on the saucer.
 
-4:5 vertical — logo on rim at top, foam texture fills rest.
+Colors: Cream mug rim with orange logo, caramel foam, warm light
+Mood: Meditative, detail, the pause before the first sip
+Style: Overhead macro, logo visible on rim, soft warm focus, 4:5 vertical
 ```
 
-**10. THE MESS**
+**10. THE MORNING**
 ```
-Spilled coffee on counter, Hot Stuff cup knocked over. Logo visible on fallen cup. Napkins thrown down to soak it up. Real moment.
+The Hot Stuff Cafe counter at opening time. Fresh pastries in the display case, steam rising from the espresso machine, first cups of the day being made. Window light flooding the space with golden early morning glow. Orange accents throughout — menu board, cup stack, signage. The calm before the rush.
 
-4:5 vertical — disaster scene, branding survives the spill.
+Colors: Orange brand accents, cream surfaces, golden morning light, warm wood
+Mood: Peaceful anticipation, fresh start, new day energy
+Style: Documentary morning scene, branding visible throughout, 4:5 vertical
 ```
 
 **11. THE BATCH**
 ```
-Multiple Hot Stuff cups being made — lined up on bar, different orders. Espresso shots pulling, milk steaming. Organized chaos.
+Multiple "Hot Stuff" branded cream cups lined up on the bar, all being made at once. Steam rising from them. Morning light catching the steam. Orange logos facing out on each cup. It feels like organized calm during a rush.
 
-4:5 vertical — cups with logos in row, action behind them.
+Colors: Cream cups with orange logos, steam catching golden light
+Mood: Efficiency, rhythm, the dance of service
+Style: Action shot of drinks being made, logos visible, warm light, 4:5 vertical
 ```
 
-**12. THE WALL**
+**12. THE WINDOW**
 ```
-Wall of Hot Stuff Cafe — logo painted large, orange on cream. Worn edges, slight paint chips. Someone's shoulder visible at frame edge.
+The exterior view looking into Hot Stuff Cafe through the front window. The "Hot Stuff Cafe" logo in orange is painted on the glass. Inside you can see the warm glow of morning light and a person with a coffee cup, soft focus. The interior looks inviting, cream and wood tones visible.
 
-4:5 vertical — logo mural fills frame, texture and wear visible.
+Colors: Orange logo on glass, warm interior glow, cream and wood inside
+Mood: Invitation, discovery, "I want to go in there"
+Style: Street photography looking in, logo on window prominent, 4:5 vertical
 ```
 
 ---
 
-## PEOPLE SHOTS (Gen Z)
+## PEOPLE SHOTS (Gen Z Cast)
 
 **13. THE SIP**
 ```
-Gen Z girl mid-sip from Hot Stuff iced coffee — eyes looking off camera, micro bangs, small nose hoop. Oversized vintage tee. Cup logo visible, straw in mouth.
+A Gen Z girl in her early 20s mid-sip from a "Hot Stuff" branded iced coffee with orange logo visible. She has a relaxed morning expression, micro bangs, small gold hoop earrings, and an oversized cream cardigan. Warm window light is hitting her face. Natural skin texture, not over-retouched.
 
-4:5 vertical — cup with logo at center, face fills top half. Flash on skin.
+Colors: Clear cup with orange logo, cream cardigan, gold jewelry, warm skin tones
+Mood: Peaceful, authentic, morning ritual
+Style: Portrait with product, natural skin, cup logo visible, 4:5 vertical
 ```
 
 **14. THE BOOTH**
 ```
-Two Gen Z friends in booth, Hot Stuff cups on table between them. One showing phone to other, both leaning in. Thrifted fits, ear stacks, funky rings. Cups with logos facing camera.
+Two Gen Z friends sitting at a window table in the cafe. "Hot Stuff" branded cups with orange logos are between them on the warm wooden table. Morning light coming through the window. One friend laughing at something on their phone, one looking out window. Cozy hangout moment. Thrifted, layered outfits.
 
-4:5 vertical — branded cups foreground, friends fill middle/top.
+Colors: Orange logos on cups, warm wood table, golden window light, earth-tone clothes
+Mood: Connection, easy friendship, the coffee shop as third place
+Style: Candid lifestyle, branded cups visible, authentic moment, 4:5 vertical
 ```
 
-**15. THE LINE**
+**15. THE READ**
 ```
-Three Gen Z customers waiting at Hot Stuff counter — backs to camera, checking phones. Mix of styles: baggy jeans, platform sneakers, cropped vintage jacket. Menu board with logo above.
+A Gen Z person sitting at the Hot Stuff Cafe window seat, completely absorbed in reading a book. A cream coffee cup with the orange "Hot Stuff" logo sits beside them. Morning light falling on the book pages. Oversized sweater, headphones around neck. Lost in the moment.
 
-4:5 vertical — people fill middle, logo menu board at top.
+Colors: Cream cup with orange logo, soft sweater tones, warm page light
+Mood: Solitude, focus, the cafe as sanctuary
+Style: Quiet lifestyle moment, branded cup visible, warm atmosphere, 4:5 vertical
 ```
 
-**16. THE WINDOW**
+**16. THE LINE**
 ```
-Gen Z person sitting at Hot Stuff window seat, staring out. Hot Stuff cup in hand, logo visible. Bleached hair, headphones around neck, oversized hoodie. Zoned out, main character moment.
+Three Gen Z customers waiting at the Hot Stuff Cafe counter. Morning light from windows behind them creates a backlit effect, golden halos. Mix of styles — baggy pants, vintage jacket, beanie. The menu board with the orange "Hot Stuff" logo is visible above them. Diverse casting.
 
-4:5 vertical — person fills frame, cup with logo at center of composition.
+Colors: Orange logo on menu board, backlit golden silhouettes, varied outfit colors
+Mood: Community, anticipation, the morning gathering
+Style: Documentary queue shot, customers backlit, logo visible, 4:5 vertical
 ```
 
 ---
@@ -135,32 +227,50 @@ Gen Z person sitting at Hot Stuff window seat, staring out. Hot Stuff cup in han
 
 **17. THE BAG**
 ```
-Hot Stuff Cafe brown paper bag — orange and black logo printed large. Slightly crinkled, grease spot at bottom from pastry. Receipt stapled to top.
+A Hot Stuff Cafe brown kraft paper takeaway bag with the orange and black logo printed on it. Morning light from a window catching the paper texture. The bag looks fresh, slightly soft from just being pulled from the shelf.
 
-4:5 vertical — bag fills frame, logo centered, texture visible.
+Colors: Kraft brown bag, orange and black logo, warm natural light
+Mood: Takeaway, to-go culture, grab and go
+Style: Packaging product shot, logo centered and clear, warm light, 4:5 vertical
 ```
 
 **18. THE STICKER**
 ```
-Close-up of Hot Stuff round logo sticker sealing coffee bag. Orange and black, edges slightly curling. Kraft paper texture underneath.
+A close-up of a round "Hot Stuff" logo sticker in orange and black, sealing a kraft paper coffee bag. Morning light reflecting off the sticker surface. Kraft paper texture visible around it.
 
-4:5 vertical — macro on sticker, branding sharp.
+Colors: Orange and black sticker, kraft paper background, golden light
+Mood: Detail, brand touchpoint, the little things matter
+Style: Macro detail shot, sticker sharp and centered, warm tones, 4:5 vertical
 ```
 
 **19. THE SLEEVE**
 ```
-Hot Stuff cup sleeve on hot coffee — logo wrapping around. Cardboard texture, coffee drips staining bottom edge. Hand holding cup, rings visible.
+A hand holding a hot coffee cup with a "Hot Stuff" branded cup sleeve in cream with orange logo wrapped around it. The logo is facing the camera. The person is wearing a few gold rings that catch the morning light. Steam rising from the cup.
 
-4:5 vertical — sleeve with logo centered, hand entering frame.
+Colors: Cream sleeve with orange logo, gold rings, steam catching light
+Mood: On the move, personal moment, warmth in hand
+Style: Lifestyle product shot, sleeve logo prominent, warm hand visible, 4:5 vertical
 ```
 
 **20. THE MERCH**
 ```
-Hot Stuff Cafe t-shirt laid on concrete — orange logo on black shirt. Worn, slightly faded from washes. Coffee cup placed on top of shirt.
+A "Hot Stuff Cafe" tote bag hanging on a hook by a door. The bag is cream colored canvas with the orange logo printed on it. Morning light coming through a nearby window. Keys hanging on a hook beside it. Ready-for-the-day vibes.
 
-4:5 vertical — shirt fills frame, logo centered, coffee cup as prop.
+Colors: Cream canvas tote, orange logo, warm morning light, brass key hook
+Mood: Lifestyle, brand loyalty, daily essential
+Style: Lifestyle merch shot, logo visible and clear, morning context, 4:5 vertical
 ```
 
 ---
 
-*Hot Stuff Cafe. 20 shots. Every frame branded.*
+## TIPS FOR CHATGPT
+
+1. **Start with the style lock** at the beginning of your session
+2. **Reference previous images** — say "same style as the last one but..."
+3. **Iterate** — if something's not right, say "make the logo more visible" or "warmer light"
+4. **Be specific about the logo** — always mention "Hot Stuff" by name
+5. **Call out colors** — "the orange should be burnt orange, not neon"
+
+---
+
+*Hot Stuff Cafe. 20 shots. Warm. Golden. Every frame branded.*
