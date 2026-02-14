@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Goods &mdash; 15 ChatGPT Prompts | Loop.Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A1A1A;
+            --secondary: #D2B48C;
+            --extra: #D2B48C;
+            --bg: #FAF9F6;
+            --bg-card: #FFFFFF;
+            --bg-code: #F5F5F3;
+            --text: #1A1A1A;
+            --text-muted: #888888;
+            --border: #E5E5E5;
+            --glow-primary: rgba(26, 26, 26, 0.1);
+            --glow-secondary: rgba(210, 180, 140, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        /* COVER */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 40% 30% at 50% 40%, var(--glow-primary), transparent),
+                radial-gradient(ellipse 30% 25% at 70% 60%, var(--glow-secondary), transparent);
+            animation: coverPulse 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes coverPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            border: 1px solid rgba(26, 26, 26, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .cover h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: clamp(4rem, 12vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .cover h1 .line1 { color: var(--primary); display: block; }
+        .cover h1 .line2 { color: var(--secondary); display: block; }
+        .cover-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        .cover-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            max-width: 500px;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 2rem auto 0;
+            border-radius: 2px;
+        }
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 0; }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .section-line {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
+        }
+
+        /* BRAND DNA */
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .dna-block h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dna-block ul { list-style: none; }
+        .dna-block li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .dna-block li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .dna-block li strong { color: var(--secondary); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 180px;
+        }
+        .swatch-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid rgba(0,0,0,0.08);
+        }
+        .swatch-info { font-size: 0.8rem; }
+        .swatch-name { font-weight: 500; color: var(--text); }
+        .swatch-hex { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .swatch-usage { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+
+        /* Brand Type */
+        .brand-type {
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        /* STYLE LOCK */
+        .style-lock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .style-lock-header {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.15), rgba(210, 180, 140, 0.1));
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .style-lock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .style-lock-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .style-lock-body { padding: 1.5rem; }
+        .style-lock-body pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #555;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .style-lock-instruction {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(26, 26, 26, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(26, 26, 26, 0.1);
+        }
+
+        /* PROMPT SECTION */
+        .prompt-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .prompt-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .prompt-section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            margin-left: auto;
+        }
+
+        /* Prompt Cards */
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover { border-color: #ccc; }
+        .prompt-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .prompt-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .prompt-body { padding: 1.5rem; }
+        .prompt-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #555;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Prompt Images */
+        .prompt-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: block;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+        }
+
+        /* Cover Logo */
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--glow-primary));
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .tip-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .tip-text { font-size: 0.9rem; color: var(--text); }
+        .tip-text strong { color: var(--secondary); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        .footer-brand {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* LOGO GRID */
+        .logo-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .logo-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Logo Warning */
+        .logo-warning {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(26, 26, 26, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(26, 26, 26, 0.1);
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .dna-grid { grid-template-columns: 1fr; }
+            .swatch { flex: 1 1 100%; }
+            .cover h1 { font-size: 3.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: #FAF9F6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+            .cover::before { display: none; }
+            section { padding: 2rem 0; }
+            .prompt-card { break-inside: avoid; }
+            .prompt-section-header { break-after: avoid; }
+            .tip-card { break-inside: avoid; }
+            @page { margin: 0.75in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+    <div class="cover-content">
+        <img src="../../logos/SOFTGOODS/softgoods_logo_v1.png" alt="Soft Goods Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-badge">A Complete AI Brand Asset Pack</div>
+        <h1>
+            <span class="line1">Soft</span>
+            <span class="line2">Goods</span>
+        </h1>
+        <div class="cover-sub">15 ChatGPT Prompts</div>
+        <div class="cover-divider"></div>
+        <p class="cover-desc">Every shot styled. Every frame branded. A complete visual identity system built for ChatGPT image generation.</p>
+    </div>
+    <div class="cover-footer">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+<!-- BRAND DNA -->
+<section>
+    <div class="container">
+        <div class="section-label">Identity</div>
+        <h2 class="section-title">Brand DNA</h2>
+        <div class="section-line"></div>
+
+        <div class="brand-type">
+            <strong>Minimal basics fashion brand</strong> &mdash; clean lines, quality fabric, effortless
+        </div>
+
+        <h3 style="font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--secondary);margin-bottom:1rem;">Color Palette</h3>
+        <div class="color-grid">
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#1A1A1A;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Black</div>
+                    <div class="swatch-hex">#1A1A1A</div>
+                    <div class="swatch-usage">Primary &mdash; logo, garments, text</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FAF9F6;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Cream</div>
+                    <div class="swatch-hex">#FAF9F6</div>
+                    <div class="swatch-usage">Secondary &mdash; garments, background, negative space</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#D2B48C;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Tan</div>
+                    <div class="swatch-hex">#D2B48C</div>
+                    <div class="swatch-usage">Accent &mdash; leather, natural, warmth</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dna-grid" style="margin-top:2.5rem;">
+            <div class="dna-block">
+                <h3>Photography Mood</h3>
+                <ul>
+                    <li><strong>Minimal</strong> &mdash; clean lines, negative space</li>
+                    <li><strong>Quality</strong> &mdash; visible fabric texture in every shot</li>
+                    <li><strong>Effortless</strong> &mdash; not trying too hard</li>
+                    <li><strong>Thoughtful</strong> &mdash; considered, intentional</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Photography Style</h3>
+                <ul>
+                    <li>Clean, bright, minimal</li>
+                    <li>Lots of white space</li>
+                    <li>Soft natural light, minimal shadows</li>
+                    <li>Medium format film quality</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Cast / People</h3>
+                <ul>
+                    <li>Young, attractive, relaxed</li>
+                    <li>Natural postures, not trying hard</li>
+                    <li>Simple jewelry, clean lines</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Logo Placement</h3>
+                <div class="logo-items">
+                    <div class="logo-item">T-shirts</div>
+                    <div class="logo-item">Caps</div>
+                    <div class="logo-item">Tote bags</div>
+                    <div class="logo-item">Hoodie embroidery</div>
+                    <div class="logo-item">Woven labels</div>
+                    <div class="logo-item">Side seam labels</div>
+                </div>
+                <div class="logo-warning">Logos only on garments and accessories &mdash; never on surfaces, walls, or furniture</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STYLE LOCK -->
+<section>
+    <div class="container">
+        <div class="section-label">Setup</div>
+        <h2 class="section-title">ChatGPT Style Lock</h2>
+        <div class="section-line"></div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste this at the start of every ChatGPT session to lock the visual style across all 15 prompts.</p>
+
+        <div class="style-lock-card">
+            <div class="style-lock-header">
+                <div class="style-lock-dot"></div>
+                <div class="style-lock-dot" style="background:var(--secondary);"></div>
+                <div class="style-lock-dot" style="background:var(--text-muted);"></div>
+                <span>style-lock.txt</span>
+            </div>
+            <div class="style-lock-body">
+                <pre>I&#x27;m creating images for a minimal basics fashion brand called &quot;Soft Goods.&quot;
+
+Visual Style:
+- Clean, bright, minimal, lots of white space
+- Soft natural light, minimal shadows
+- Medium format film quality, subtle grain
+- Black (#1A1A1A) and cream (#FAF9F6) only — no other colors
+
+Brand Rules:
+- &quot;Soft Goods&quot; branding appears on: t-shirts, caps, tote bags, hoodie embroidery, woven labels
+- Visible fabric texture in every shot
+- Negative space / minimal composition
+- Natural light only — never flash or neon
+
+Cast: Young, attractive, relaxed. Natural postures, not trying too hard.
+
+Keep this style consistent across all images I request.</pre>
+            </div>
+        </div>
+        <div class="style-lock-instruction">
+            Copy the text above and paste it as your first message in a new ChatGPT conversation. Then send prompts from the sections below one at a time.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROMPTS -->
+<section>
+    <div class="container">
+        <div class="prompt-section-header">
+            <div class="prompt-section-icon">&#128085;</div>
+            <div class="prompt-section-title">Prompts</div>
+            <div class="prompt-section-count">15 prompts</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">1</div>
+                <div class="prompt-title">The Tee</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_01_THE_TEE.png" alt="The Tee" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium format, soft window light spilling from a twelve-foot industrial window, the kind of loft that costs $8K/month and has nothing in it. She&#x27;s standing barefoot on poured concrete, just pulled on a cream SOFTGOODS tee, both hands still at the hem, looking directly into camera — not posing, just checking if you noticed. Hair still damp from the shower, one thin gold chain, no other jewelry. The fabric sitting exactly right against her collarbones, the screen print crisp because it&#x27;s the first wear. Behind her: the loft stretching deep — exposed steel beams, raw plaster walls, a single black marble island with the packaging torn open, tissue paper spilling cream. Her Common Projects Achilles Low kicked off by the door, one upright, one on its side. A matte black MacBook closed on the counter beside a half-drunk oat milk latte. The shadow from the window mullions making a grid on the concrete floor. Shallow depth of field, maximum negative space. Subtle grain. The simplest moment in the most considered room.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">2</div>
+                <div class="prompt-title">The Corridor</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_02_THE_CORRIDOR.png" alt="The Corridor" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, medium format, flat overcast light from a skylight thirty feet up. He&#x27;s mid-stride through a brutalist concrete corridor — cream SOFTGOODS hoodie, drawstrings swinging at different lengths, hood down, black joggers, Common Projects on concrete. One hand in the kangaroo pocket, the other holding a kraft paper coffee cup, no branding, just a black lid. The corridor is the shot — twenty feet tall, poured concrete walls with the board-form texture still visible, one narrow window at the end making him walk into light. His shadow clean and long behind him on polished concrete so smooth it reflects a ghost of him. Through a doorway to his left: a glimpse of a studio — a garment rack, a single pendant light, someone at a table. The architecture dwarfing him. Subtle grain, desaturated, slight motion blur at his feet. The brand lives in how he moves through the space.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">3</div>
+                <div class="prompt-title">The Flat Lay</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_03_THE_FLAT_LAY.png" alt="The Flat Lay" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Overhead, medium format, soft diffused light, zero shadows. A black SOFTGOODS crewneck folded once on raw Belgian linen — the screen-printed logo cracked from three washes, the detail that says worn not displayed. The weave visible, tight, intentional, the kind of cotton you can feel through the screen. Beside it: a cream tee unfolded, collar relaxed from being pulled over a head a hundred times. Around them, barely in frame: a pair of Japanese tailor&#x27;s shears resting open on the linen, a brass thimble worn smooth at the tip, a rotary cutter with the safety guard flipped back, a strip of cream twill tape curling off a spool. One coffee ring on the linen where a mug sat, the fabric darkened in a perfect circle. The frame mostly empty — the items clustered lower-left, the rest just texture. Razor-sharp focus, subtle grain. The tools and the product on the same surface.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">4</div>
+                <div class="prompt-title">The Stoop</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_04_THE_STOOP.png" alt="The Stoop" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide, medium format, soft overcast, flat and honest. Two people on wide concrete gallery steps outside a converted warehouse — the kind of space with a steel door and no signage. Him in a black SOFTGOODS cap, cream hoodie, black Dickies, New Balance 990v6 in grey. Looking at his phone without expression, thumb scrolling. Her beside him, legs stretched out, black SOFTGOODS crewneck pushed to the elbows, cream wide-legs, Birkenstock Bostons in black suede. Eyes closed, face tilted up. A cream SOFTGOODS tote between them — a hardcover Phaidon book spine visible, a water bottle, a rolled-up lookbook. The steps worn smooth in the center from years. A single dried leaf in the corner. Behind them: one concrete wall, one steel door, one brass handle. They&#x27;re not performing anything. Subtle grain, shallow depth of field. The whole brand in two people doing nothing.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">5</div>
+                <div class="prompt-title">The Mirror</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_05_THE_MIRROR.png" alt="The Mirror" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot through the reflection, medium format, clean soft window light from the left. She&#x27;s in front of a full-length mirror, not posing — checking the fit of a black SOFTGOODS cap, head tilted, eyes on the brim in the glass. Direct eye contact with the camera through the reflection. Black fitted tee with the small chest logo, cream wide-leg trousers breaking once at white Common Projects. The mirror slim-framed matte black, leaning against bare plaster, the bottom edge resting on light oak flooring. In the reflection behind her: the apartment — empty except for what matters. A clothing rack with six pieces spaced far apart, all black and cream. A heavy canvas bolt bag on the floor beside kicked-off sneakers, a rolled pattern piece poking out the top. A single Noguchi lamp in the corner, off. Subtle grain, sharp focus on her expression in the glass, the room behind dissolving to cream. Negative space is 70% of the frame.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">6</div>
+                <div class="prompt-title">The Studio</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_06_THE_STUDIO.png" alt="The Studio" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide angle, medium format, natural light from industrial steel-frame windows running floor to ceiling. The studio as a brand statement — 3,000 square feet of polished concrete, white walls, 16-foot ceilings, exposed ductwork painted matte black. Three people: one at a Juki DDL industrial single-needle sewing machine in a SOFTGOODS hoodie, foot on the pedal, guiding black cotton through the throat plate, thread cones in cream and black on the spool pins. One cutting fabric at a long oak table, a rotary cutter in hand, bolts of black and cream cotton stacked at the end, a pattern piece pinned to the fabric with dressmaker&#x27;s weights. One at the window on a call, back to camera, cream joggers, barefoot on concrete, their reflection ghosting in the glass. Against the far wall: an industrial serger, a heat press with the lid up, a dress form wearing an unfinished cream tee with the side seam still pinned. A rolling rack with twelve finished garments spaced far apart — all black and cream. A half-unpacked box from the mill, tissue paper spilling. Subtle grain, clean window shadows making rectangles on the floor. The equipment costs more than the rent.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">7</div>
+                <div class="prompt-title">The Bag</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_07_THE_BAG.png" alt="The Bag" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Street level, medium format, soft overcast. The frame is waist-down — cream wide-leg pants, white Common Projects Achilles Low, one slightly scuffed at the toe from actual use. A black SOFTGOODS tote over the shoulder, the screen-printed logo facing out, ink worn at the edges because this bag has been everywhere. The bag slouching from weight: a Kinfolk magazine spine visible, the corner of a MacBook Air, a rolled cream beanie poking out. One hand on the canvas strap, the fingers relaxed, a simple gold band on the ring finger. The sidewalk clean poured concrete, a single brass apartment buzzer on the wall behind them. Their shadow barely there — overcast, the light so flat it&#x27;s almost Japanese. No storefronts, no signage, just a wall and a person in motion. Subtle grain, shallow depth of field on the bag, the background falling to nothing. Editorial calm.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">8</div>
+                <div class="prompt-title">The Detail</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_08_THE_DETAIL.png" alt="The Detail" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Extreme close-up, medium format, soft directional window light from above-left. Someone&#x27;s hands mid-fold on a cream SOFTGOODS tee — the weave visible between their fingers, you can count the thread, the GSM weight implied in how the fabric holds. A woven side-seam label: black thread on cream linen tape, &quot;Soft Goods&quot; in type so small you&#x27;d miss it if you weren&#x27;t looking. A cloth measuring tape draped over one wrist, the numbers faded from use, a pin cushion strapped to the other. A stack of black tees beside them, edges not quite aligned because precision isn&#x27;t the point — care is. The surface polished black marble, one faint calcite vein running diagonal. In the far background, soft and out of focus: the studio, the garment rack, the window. Razor-sharp focus on the label, subtle grain. Someone who pays attention to the thing most people never see.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">9</div>
+                <div class="prompt-title">The Drop</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_09_THE_DROP.png" alt="The Drop" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium format, soft ambient light from above. A cream SOFTGOODS hoodie hanging alone on a single matte black wall hook against bare plaster — the kind of plaster that costs more than paint because it&#x27;s applied by hand. Drawstrings at different lengths, one tucked inside the hood. Below on the polished concrete: white Common Projects placed together but not parallel, the leather softened from wear, one tongue folded in from how they were kicked off. The wall surface raw lime plaster, one faint trowel mark, one hairline crack running from the hook up. A slim shadow from the hood falling on the wall, the light source invisible but warm. Nothing else in the frame. The ratio is extreme — the hoodie small in the upper-third, the wall and floor consuming everything else. Subtle grain, sharp focus. The image works because of everything that isn&#x27;t there.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">10</div>
+                <div class="prompt-title">The Wear</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_10_THE_WEAR.png" alt="The Wear" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from across the street, medium format, soft late-afternoon light from behind them, warm but desaturated the way medium format goes golden without trying. A couple mid-crosswalk in a wide open intersection — not holding hands, just walking in sync, three inches between their arms. Him: black SOFTGOODS crewneck faded at the shoulders from sun, cream pants cropped at the ankle, black New Balance 2002R. Her: cream oversized SOFTGOODS hoodie, sleeves covering her hands, black cigarette pants, white Common Projects. A black SOFTGOODS tote disappearing into a fold of her arm. They&#x27;re out of step with each other — natural, uncoordinated, comfortable. The crosswalk lines geometric beneath them, fresh white paint. No cars, no other people. The street wide and empty, a row of London plane trees bare against a grey-white sky. Their shadows merging on the asphalt into one shape that doesn&#x27;t look like either of them. Subtle grain, shallow depth of field, the trees dissolving to soft verticals. Two people who match without trying.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">11</div>
+                <div class="prompt-title">The Hanger</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_11_THE_HANGER.png" alt="The Hanger" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium format, soft diffused light from a single north-facing window, the kind of light that doesn&#x27;t cast shadows so much as suggest them. A single black SOFTGOODS garment — an oversized crew, washed enough times that the shoulder seams have softened into curves — hanging on a slim wooden hanger against a flat white wall. The hanger oak, thin, the kind that costs twelve dollars because someone sanded it by hand. The fabric drape doing all the work: one sleeve hanging heavier than the other, the hem not quite level, a faint crease at the chest from being folded before this moment. The weave visible at the collar, tight-knit cotton pulling slightly where the hanger meets the neckline. The wall raw plaster, white but not bright — the warmth of old lath underneath bleeding through. One thin brass nail, one shadow line from the hanger&#x27;s hook, nothing else. Negative space consuming eighty percent of the frame, the garment small and centered, the emptiness around it more considered than the garment itself. Subtle grain, medium format depth, razor focus on the fabric texture where it catches the light at the shoulder. The image works because there is nothing to distract from the one thing that matters.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">12</div>
+                <div class="prompt-title">The Thread</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_12_THE_THREAD.png" alt="The Thread" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Extreme close-up, medium format, soft overhead task light mixing with ambient window light from behind. The needle of a Juki DDL-8700 mid-stitch — the tip piercing cream cotton, the thread pulled taut from the tension disc, a single loop forming beneath the throat plate. The operator&#x27;s hands guiding the fabric through: fingertips calloused at the pads, one thumbnail trimmed short for precision, a cloth measuring tape looped around the left wrist. The fabric grain magnified — you can see individual fibers splitting where the needle enters, the weave separating and closing, the stitch line running ruler-straight for six inches behind the needle. The bobbin thread barely visible underneath, cream on cream. The presser foot chrome and worn at the edges from ten thousand hours of pressure. Around the needle plate: a few stray thread ends, a pin resting in the groove, a smear of machine oil catching light. The machine&#x27;s black enamel body soft in the background, the SOFTGOODS logo on a finished garment draped over the table edge, out of focus but legible. Subtle grain, razor-sharp at the needle point, the depth of field so shallow the hands dissolve at the knuckles. The moment between one stitch and the next.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">13</div>
+                <div class="prompt-title">The Walk</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_13_THE_WALK.png" alt="The Walk" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Street level, medium format, soft overcast city light — the sky white-grey, no sun, no direction to the light, just honest flat exposure. She&#x27;s mid-stride on a wide empty sidewalk, not posing, not aware of the camera, just going somewhere. Full SOFTGOODS fit: cream oversized hoodie with the hood down, sleeves pushed to mid-forearm, black straight-leg trousers breaking once at white Common Projects Achilles Low. A black SOFTGOODS tote over one shoulder, the strap twisted once from how she grabbed it. Her hair tied back loose, one strand free, AirPods in, eyes forward. The clothes just working — the hoodie sitting where it sits, the trousers catching air at the ankle from the pace, the tee underneath barely visible at the neckline. The sidewalk poured concrete, expansion joints every six feet making a rhythm. To her left: a concrete building wall, no signage, no color, one brass downspout running vertical. Behind her far back: a single London plane tree, bare branches, the street empty. Slight motion blur at her feet and the tote&#x27;s swing. Subtle grain, desaturated, the palette accidentally matching the city. Candid in the way that only works when the clothes don&#x27;t need the moment.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">14</div>
+                <div class="prompt-title">The Stack</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_14_THE_STACK.png" alt="The Stack" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium format, soft even light from overhead fluorescents diffused through a white ceiling — the unglamorous light of a real workspace. The shipping room: a long oak packing table, four orders in progress. Cream tissue paper torn and crinkled around folded black SOFTGOODS tees, each fold precise — collar aligned, sleeves tucked, the screen-print centered and facing up. Small matte black SOFTGOODS stickers on the tissue, the logo debossed not printed, catching light at an angle. Kraft mailer boxes open, the interior cream, a handwritten thank-you card in one — black ink on cream card stock, the handwriting imperfect because it&#x27;s real. A tape gun resting at the table edge, the roll half-used. Behind the table: a wall of shelving — labeled bins of black and cream garments sorted by size, stacks of folded tissue, rolls of branded stickers on a dowel. A shipping label printer mid-print, one label curling out. On the table corner: a coffee in a ceramic mug, black, no lid. Someone&#x27;s hand reaching for a sticker, wrist showing a simple black watch, the other hand pressing tissue down into a box. The brand at scale but still touched by hands. Subtle grain, sharp across the whole frame, the depth of field deep because the room is the subject.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">15</div>
+                <div class="prompt-title">The Wash</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/SOFTGOODS/SOFTGOODS_15_THE_WASH.png" alt="The Wash" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium format, soft morning light from a window to the right — warm but not golden, the kind of light in the first hour after sunrise when everything is still quiet. A cream SOFTGOODS tee hung to dry on a thin black wire hanger from a simple wall hook, the fabric still heavy with water, the weight pulling the hem down into a slight stretch, the shoulders sagging past the hanger&#x27;s edges. Water drops caught mid-drip at the lowest point of the hem, one drop frozen in air, another about to fall. The cotton darkened where it&#x27;s wettest — the chest, the underarms — the cream shifting to a deeper ivory that will fade as it dries. The weave swollen with moisture, the texture magnified, each thread visible and fat with water. The screen-print slightly raised from the wash, the ink edges softened but holding. Below: a clean concrete floor, a small puddle forming, the reflection of the tee ghosting in the water. The wall behind bare white plaster, one hairline crack, one faint water stain from another day. Nothing else in the frame. Subtle grain, the focus split between the water drop at the hem and the fabric texture at the chest. The garment earning its softness one wash at a time.</div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section>
+    <div class="container">
+        <div class="section-label">Usage</div>
+        <h2 class="section-title">Tips for ChatGPT</h2>
+        <div class="section-line"></div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div class="tip-text"><strong>Start with the style lock</strong> &mdash; paste it as your first message in every new ChatGPT session</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div class="tip-text"><strong>Keep it minimal</strong> &mdash; if it looks busy, say "more negative space, cleaner, simpler"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div class="tip-text"><strong>Emphasize texture</strong> &mdash; "show the fabric weave," "visible thread count" keeps the quality feel</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div class="tip-text"><strong>Black and cream only</strong> &mdash; if other colors creep in, say "strictly black and cream palette"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div class="tip-text"><strong>Natural light only</strong> &mdash; remind ChatGPT "soft natural light, no flash, no neon" if it deviates</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-tagline">Soft Goods. 15 shots. Clean lines. Quality fabric. Every frame branded.</div>
+    <div class="footer-brand">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+</body>
+</html>

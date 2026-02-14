@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drip Cafe &mdash; 15 ChatGPT Prompts | Loop.Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E85D04;
+            --secondary: #FDF6E3;
+            --extra: #8B6914;
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #0d0d0d;
+            --text: #f5f5f5;
+            --text-muted: #777777;
+            --border: #1e1e1e;
+            --glow-primary: rgba(232, 93, 4, 0.3);
+            --glow-secondary: rgba(253, 246, 227, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        /* COVER */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 40% 30% at 50% 40%, var(--glow-primary), transparent),
+                radial-gradient(ellipse 30% 25% at 70% 60%, var(--glow-secondary), transparent);
+            animation: coverPulse 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes coverPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            border: 1px solid rgba(232, 93, 4, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .cover h1 {
+            font-family: 'Playfair Display', sans-serif;
+            font-weight: 700;
+            font-size: clamp(4rem, 12vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .cover h1 .line1 { color: var(--primary); display: block; }
+        .cover h1 .line2 { color: var(--secondary); display: block; }
+        .cover-sub {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        .cover-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            max-width: 500px;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 2rem auto 0;
+            border-radius: 2px;
+        }
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 0; }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .section-line {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
+        }
+
+        /* BRAND DNA */
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .dna-block h3 {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dna-block ul { list-style: none; }
+        .dna-block li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .dna-block li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .dna-block li strong { color: var(--secondary); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 180px;
+        }
+        .swatch-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.08);
+        }
+        .swatch-info { font-size: 0.8rem; }
+        .swatch-name { font-weight: 500; color: var(--text); }
+        .swatch-hex { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .swatch-usage { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+
+        /* Brand Type */
+        .brand-type {
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        /* STYLE LOCK */
+        .style-lock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .style-lock-header {
+            background: linear-gradient(135deg, rgba(232, 93, 4, 0.15), rgba(253, 246, 227, 0.1));
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .style-lock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .style-lock-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .style-lock-body { padding: 1.5rem; }
+        .style-lock-body pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .style-lock-instruction {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(232, 93, 4, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(232, 93, 4, 0.1);
+        }
+
+        /* PROMPT SECTION */
+        .prompt-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .prompt-section-title {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .prompt-section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            margin-left: auto;
+        }
+
+        /* Prompt Cards */
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover { border-color: #2a2a2a; }
+        .prompt-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .prompt-title {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .prompt-body { padding: 1.5rem; }
+        .prompt-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #bbb;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Prompt Images */
+        .prompt-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: block;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+        }
+
+        /* Cover Logo */
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--glow-primary));
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .tip-num {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .tip-text { font-size: 0.9rem; color: var(--text); }
+        .tip-text strong { color: var(--secondary); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-tagline {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        .footer-brand {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* LOGO GRID */
+        .logo-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .logo-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Logo Warning */
+        .logo-warning {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(214, 40, 40, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .dna-grid { grid-template-columns: 1fr; }
+            .swatch { flex: 1 1 100%; }
+            .cover h1 { font-size: 3.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: #0a0a0a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+            .cover::before { display: none; }
+            section { padding: 2rem 0; }
+            .prompt-card { break-inside: avoid; }
+            .prompt-section-header { break-after: avoid; }
+            .tip-card { break-inside: avoid; }
+            @page { margin: 0.75in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+    <div class="cover-content">
+        <img src="../../logos/DRIP/drip_logo_v1.png" alt="Drip Cafe Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-badge">A Complete AI Brand Asset Pack</div>
+        <h1>
+            <span class="line1">Drip</span>
+            <span class="line2">Cafe</span>
+        </h1>
+        <div class="cover-sub">15 ChatGPT Prompts</div>
+        <div class="cover-divider"></div>
+        <p class="cover-desc">Every shot styled. Every frame branded. A complete visual identity system built for ChatGPT image generation.</p>
+    </div>
+    <div class="cover-footer">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+<!-- BRAND DNA -->
+<section>
+    <div class="container">
+        <div class="section-label">Identity</div>
+        <h2 class="section-title">Brand DNA</h2>
+        <div class="section-line"></div>
+
+        <div class="brand-type">
+            <strong>Specialty coffee cafe</strong> &mdash; warm, intimate, neighborhood gathering
+        </div>
+
+        <h3 style="font-family:'Playfair Display',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--secondary);margin-bottom:1rem;">Color Palette</h3>
+        <div class="color-grid">
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#E85D04;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Burnt Orange</div>
+                    <div class="swatch-hex">#E85D04</div>
+                    <div class="swatch-usage">Primary &mdash; logo, signage, accents</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FDF6E3;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Cream</div>
+                    <div class="swatch-hex">#FDF6E3</div>
+                    <div class="swatch-usage">Secondary &mdash; ceramics, napkins, warmth</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#1A1A1A;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Black</div>
+                    <div class="swatch-hex">#1A1A1A</div>
+                    <div class="swatch-usage">Text, contrast, depth</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#8B6914;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Warm Brown</div>
+                    <div class="swatch-hex">#8B6914</div>
+                    <div class="swatch-usage">Coffee tones, wood, natural</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dna-grid" style="margin-top:2.5rem;">
+            <div class="dna-block">
+                <h3>Photography Mood</h3>
+                <ul>
+                    <li><strong>Warm</strong> &mdash; golden morning light, Portra tones</li>
+                    <li><strong>Intimate</strong> &mdash; the small moments of morning</li>
+                    <li><strong>Lived-in</strong> &mdash; worn wood, coffee rings, imperfect latte art</li>
+                    <li><strong>Community</strong> &mdash; the neighborhood gathering</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Photography Style</h3>
+                <ul>
+                    <li>Warm 35mm Kodak Portra 400</li>
+                    <li>Shallow depth of field</li>
+                    <li>Soft golden window light only &mdash; NEVER flash</li>
+                    <li>Warm highlights with crushed blacks</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Cast / People</h3>
+                <ul>
+                    <li>Young, attractive, diverse</li>
+                    <li>Relaxed, oversized sweaters, gold jewelry</li>
+                    <li>Not performative &mdash; just being</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Logo Placement</h3>
+                <div class="logo-items">
+                    <div class="logo-item">Cream ceramic cups</div>
+                    <div class="logo-item">Napkins</div>
+                    <div class="logo-item">Barista aprons</div>
+                    <div class="logo-item">Window signage</div>
+                    <div class="logo-item">Coffee bags</div>
+                    <div class="logo-item">A-frame chalkboard</div>
+                </div>
+                <div class="logo-warning">NEVER place logos directly on food or drink liquid &mdash; branding is on the vessel, not the content</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STYLE LOCK -->
+<section>
+    <div class="container">
+        <div class="section-label">Setup</div>
+        <h2 class="section-title">ChatGPT Style Lock</h2>
+        <div class="section-line"></div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste this at the start of every ChatGPT session to lock the visual style across all 15 prompts.</p>
+
+        <div class="style-lock-card">
+            <div class="style-lock-header">
+                <div class="style-lock-dot"></div>
+                <div class="style-lock-dot" style="background:var(--secondary);"></div>
+                <div class="style-lock-dot" style="background:var(--text-muted);"></div>
+                <span>style-lock.txt</span>
+            </div>
+            <div class="style-lock-body">
+                <pre>I&#x27;m creating images for a specialty coffee cafe called &quot;Drip.&quot;
+
+Visual Style:
+- Shot on 35mm Kodak Portra 400 with warm color cast
+- Soft golden morning window light only — NEVER flash
+- Film grain visible, shallow depth of field
+- Warm highlights with crushed blacks in shadows
+
+Brand Rules:
+- &quot;Drip&quot; branding appears on: cream ceramic cups, napkins, aprons, window signage, coffee bags, A-frame chalkboard
+- NEVER place logos directly on food or drink items
+- Burnt orange (#E85D04) and cream (#FDF6E3) palette
+- Cream ceramic cups preferred (never paper cups)
+- Lived-in cafe with worn wood surfaces
+
+Cast: Young, attractive, diverse. Relaxed, not performative.
+
+Keep this style consistent across all images I request.</pre>
+            </div>
+        </div>
+        <div class="style-lock-instruction">
+            Copy the text above and paste it as your first message in a new ChatGPT conversation. Then send prompts from the sections below one at a time.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROMPTS -->
+<section>
+    <div class="container">
+        <div class="prompt-section-header">
+            <div class="prompt-section-icon">&#9749;</div>
+            <div class="prompt-section-title">Prompts</div>
+            <div class="prompt-section-count">15 prompts</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">1</div>
+                <div class="prompt-title">The Cup</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_01_THE_CUP.png" alt="The Cup" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shallow depth of field, 85mm, f/1.8, warm Kodak Portra 400. A hand resting on a worn wooden table beside an iced coffee in a heavy clear glass — &quot;Drip&quot; in burnt orange printed on the side, condensation running down in slow uneven tracks, pooling at the base into a wet ring on the wood. The coffee two-toned: cold brew dark at the bottom, oat milk still swirling in a slow cloud at the top, not yet stirred. Her hand relaxed beside it, one gold band on the ring finger worn thin from years, short clean nails, a faint coffee stain on the thumb pad. A dog-eared paperback face-down beside the glass, the spine cracked white, a torn receipt as a bookmark poking out page 143. The table surface scratched and stained with a decade of cup rings, one deep gouge where someone dragged something heavy. A cream &quot;Drip&quot; napkin under the glass, already damp and imprinted with the base circle. Morning light pouring through the window behind, wrapping the glass in gold, the ice cubes casting tiny prismatic shadows on the wood. The cafe beyond her soft, figures and warm light melting into bokeh. Film grain visible in the warm shadows under the table, blacks crushed olive-green the way Portra goes when underexposed.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">2</div>
+                <div class="prompt-title">The Barista</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_02_THE_BARISTA.png" alt="The Barista" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot, 50mm, f/2, 35mm Portra 400 with warm window light falling in horizontal bars across their face through half-open blinds. The barista — sharp cheekbones, a small septum ring, sleeves pushed past the elbows showing a single-needle botanical tattoo on the inner forearm — mid-pour, eyes locked on the rosetta forming in a cream ceramic &quot;Drip&quot; mug. Not looking up. Won&#x27;t look up until it&#x27;s done. Their &quot;Drip&quot; apron burnt orange with espresso stains that won&#x27;t come out, a pen behind one ear they forgot about two hours ago. The espresso machine behind them scarred and chrome, the drip tray overflowing slightly, dried milk splatter on the steam wand they haven&#x27;t wiped since the morning rush. A stack of ceramic mugs — all slightly different sizes because they were collected, not ordered. Their hands steady, the milk pitcher tilted at exactly the angle that separates good from great. Behind everything: the warm smear of the cafe in shallow focus, someone reading, a dog under a table, a coat over a chair. Film grain, the window light making the steam from the mug glow, crushed blacks in the corners where the light doesn&#x27;t reach. Someone choosing this over everything else they could be doing.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">3</div>
+                <div class="prompt-title">The Sip</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_03_THE_SIP.png" alt="The Sip" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">35mm Kodak Portra 400, 85mm, warm window light catching her profile in a hard gold edge. She&#x27;s holding a &quot;Drip&quot; iced coffee loosely in one hand, the glass resting on her knee, not drinking — just holding it like she forgot it&#x27;s there. Staring out the window at something across the street we&#x27;ll never see. Condensation has dripped down the glass and soaked a dark circle into her jeans at the knee. Gold hoops, an oversized knit that&#x27;s sliding off one shoulder showing a thin bra strap, a canvas tote on the bench beside her with a vinyl sleeve and a water bottle and keys visible at the top. Her face half-lit from the window, half in warm shadow, a single eyelash caught on her cheek she hasn&#x27;t noticed. A croissant on a small plate beside her — one bite taken twenty minutes ago, the pastry flaking onto the table. Her phone face-down. The window behind her slightly fogged at the bottom from the temperature difference. A strand of hair stuck to her lip gloss. Shallow depth of field, the street outside just warm shapes and light. Film grain heavier in the shadow side of her face, lens flare from the window wrapping around her shoulder.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">4</div>
+                <div class="prompt-title">The Sidewalk Table</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_04_THE_SIDEWALK_TABLE.png" alt="The Sidewalk Table" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide, 35mm lens, warm Portra 400, early morning golden hour. Two people at the iron table outside Drip — one drawing in a small Moleskine, head down, wrist smudged with graphite. The other with sunglasses pushed into messy hair, coffee at their lips, eyes half-closed in the sun, thinking about nothing. Neither talking. Comfortable in silence the way only old friends or new lovers are. Cream ceramic &quot;Drip&quot; mugs between them — one empty with a foam residue line and a lipstick trace on the rim, one still steaming. A grey whippet sleeping under the table, leash wrapped twice around the chair leg, ribs expanding and contracting slowly. &quot;Drip&quot; hand-painted in burnt orange on the window behind them, the morning sun turning the paint molten. An A-frame chalkboard on the sidewalk — today&#x27;s special in someone&#x27;s messy handwriting, the &#x27;S&#x27; written twice because the first one was wrong and they just wrote over it. A bicycle leaning against the wall, basket stuffed with a canvas bag. They look like they arrived when the cafe opened and have no plan to move. Lens flare bleeding from the window edge, film grain golden, the whole frame warm enough to feel.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">5</div>
+                <div class="prompt-title">The Friends</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_05_THE_FRIENDS.png" alt="The Friends" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">35mm Portra 400, 50mm, shallow depth of field, golden window light from the left casting long warm bars across the table. Two people at a small table pushed against the wall — she&#x27;s leaning forward with both hands wrapped around a cream &quot;Drip&quot; mug, talking low about something that matters, her eyes not leaving his. He&#x27;s listening, chin resting on his knuckles, the start of a smile he&#x27;s trying to hold back. Three hours in. Cups refilled twice — the barista stopped asking what they want. A &quot;Drip&quot; napkin balled and torn from fidgeting. A lipstick mark on one cup rim fading where she kept drinking over it. The table surface worn smooth to a different color where decades of elbows have rested. Morning light making the steam from her mug visible for about two inches before it disappears. His jacket over the back of the chair, one sleeve dragging the floor. She has a freckle on her collarbone she&#x27;s never noticed in photos. The cafe behind them — a figure at the counter, the espresso machine, hanging plants — all warm bokeh. Film grain, Portra pulling the skin tones warm and true, the crushed blacks where the cafe falls away soft.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">6</div>
+                <div class="prompt-title">The Cafe</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_06_THE_CAFE.png" alt="The Cafe" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, 28mm, 35mm Kodak Portra 400, warm color cast, morning light flooding through floor-to-ceiling windows and making everything it touches glow. The Drip interior from just inside the doorway — worn honey-colored wood floors with a path worn lighter where everyone walks. Mismatched chairs and tables, the kind of room assembled from Craigslist finds over fifteen years. A barista behind the machine mid-pull, the group head steaming. A regular at the bar — same seat as yesterday, elbow on the counter, reading glasses on, newspaper folded to the crossword. Someone in the corner booth with over-ear headphones, eyes closed, mug going cold. No one performing for anyone else. &quot;Drip&quot; hand-painted in faded orange on the exposed brick wall, the paint thinner where someone tried to touch it up and the colors don&#x27;t quite match. Dust suspended in a beam of window light, spinning slow. A dog sleeping under the window table, tail twitching. The whole room warm and golden and alive with the sound of steam and ceramic on wood. Film grain throughout, the light from the windows so warm it tints the white walls peach.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">7</div>
+                <div class="prompt-title">The Line</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_07_THE_LINE.png" alt="The Line" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from behind the counter, 35mm Portra 400, shallow depth of field focused on the faces. Five people in line, morning light flooding in behind them through the glass door, creating warm halos around their hair and shoulders, lens flare bleeding across the top of frame. The person at the front — composed, patient, wearing a coat that fits perfectly — already knows their order, has been coming here since it opened. The one behind them reading the chalkboard menu with a tilted head, lips moving slightly while they decide. Third in line: someone with a hardcover tucked under their arm, the dust jacket torn at one corner, flipping through their phone without looking at it. The rest of the line loose and relaxed — nobody&#x27;s in a rush because the coffee is worth the wait and they all know it. &quot;Drip&quot; in orange on the chalkboard above, some prices rubbed off and rewritten at different heights, a small drawing of a cup someone added that the owner never erased. The barista already reaching for a regular&#x27;s mug — the one with the chip on the handle. Warm highlights wrapping every figure, their clothes all accidentally beautiful. Film grain, crushed blacks beneath the counter.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">8</div>
+                <div class="prompt-title">The Walk</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_08_THE_WALK.png" alt="The Walk" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Street-level, 35mm Kodak Portra 400, warm morning light from behind creating a full silhouette halo. Someone pushing out the front door backward, hip on the push bar, both hands around a steaming &quot;Drip&quot; cup, steam curling from the lid in the cold air. Coat buttoned wrong — one side higher than the other — scarf thrown on in the doorway, sunglasses already on despite it being 7:30am because the light&#x27;s that strong. The &quot;Drip&quot; logo on the glass door splitting and stretching as the door swings wide. The cafe interior behind them overexposed into a warm gold blur of movement and steam and someone waving. The sidewalk ahead still wet from last night&#x27;s rain, reflecting sky and the bottom of the building across the street. One shoelace untied. They look like they have somewhere critical to be but this cup was non-negotiable and they&#x27;d be late again before they&#x27;d skip it. Film grain heavy, lens flare catching the door&#x27;s edge and fracturing into a warm streak, the whole frame leaning into the warmth.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">9</div>
+                <div class="prompt-title">The Storefront</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_09_THE_STOREFRONT.png" alt="The Storefront" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from across the street, 85mm, 35mm Portra 400, warm golden morning. Drip — a corner storefront glowing from inside, the kind of place you&#x27;d cross four lanes of traffic to reach. &quot;Drip&quot; hand-painted in burnt orange across the window, the lettering slightly uneven because the owner&#x27;s friend did it on a Saturday, the paint fading at the bottom where afternoon sun hits it every day. Through the glass: warm figures in soft focus, steam rising from somewhere, the barista&#x27;s silhouette behind the machine. A bicycle locked to the parking meter outside, a canvas bag in the basket with a baguette poking out like it&#x27;s a movie but it&#x27;s not, it&#x27;s just Tuesday. Morning light hitting only the building&#x27;s upper half, the storefront still in cool blue shadow, warm gold leaking out from inside. Someone walking past on the sidewalk with their &quot;Drip&quot; cup, not looking at the camera or the building, already somewhere else in their head. The A-frame out front: &quot;WE&#x27;RE OPEN&quot; and below it, in smaller chalk: &quot;obviously.&quot; Shallow depth of field on the window signage, the street beyond just warm shapes. Film grain, the warmth radiating from the interior through the glass like visible heat.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">10</div>
+                <div class="prompt-title">The Beans</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_10_THE_BEANS.png" alt="The Beans" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Overhead close-up, 35mm Portra 400, warm tungsten from a brass pendant lamp making everything below it golden. A cream canvas &quot;Drip&quot; bag of beans — top rolled down and clipped with a wooden clothespin, the orange logo facing up, a small oil stain where one bean leaked. Someone&#x27;s hand in frame mid-scoop, a wooden spoon trailing three escaped beans across a scarred butcher block counter. A ceramic V60 pour-over mid-brew behind it, dark coffee spiraling through the paper filter in a slow clock pattern, dripping into a cream mug below. Fine grounds scattered across the wood like evidence of someone who weighs by feel, not by scale. A handwritten tasting note on a scrap of brown paper tucked into the bag: &quot;Stone fruit, honey, June harvest.&quot; The counter surface showing years — knife marks, a burn ring from a hot pan, coffee stains that have become the wood&#x27;s pattern. A scale pushed to the side, still reading 18.2g. Everything warm, everything worn, everything in use. Soft window light from the left mixing with the pendant lamp. Film grain, golden tones, Portra turning the shadows into amber.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">11</div>
+                <div class="prompt-title">The Pour</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_11_THE_POUR.png" alt="The Pour" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Close-up from slightly above, 85mm, f/2, 35mm Kodak Portra 400, soft golden window light raking across from the left. A pour-over in progress — water spiraling through a ceramic Hario V60 cone in a slow deliberate circle, the stream thin and controlled from a gooseneck kettle with a matte black finish and a single dent near the spout from being dropped once. The water hitting the coffee bed and blooming outward, gases escaping through the wet grounds in small volcanic bubbles, the dark slurry swirling counterclockwise. Steam rising from the cone in a column that catches the window light and turns gold for two inches before vanishing. The barista&#x27;s hand steady on the kettle — knuckles slightly dry, a thin leather bracelet dark with water stains, forearm veins visible from the controlled pour. Below the cone: a cream ceramic &quot;Drip&quot; mug catching the first dark drips, the coffee hitting the bottom of the empty mug in a pattern like ink in water. A folded &quot;Drip&quot; napkin beside the setup, a digital scale beneath reading 247g and climbing. The wooden counter beneath scarred with circular heat marks and scattered with a few stray grounds that escaped the grinder. The paper filter edge damp and translucent where coffee has wicked up past the grounds. Warm Portra tones pulling everything amber, film grain visible in the steam, the background a wash of golden bokeh — the cafe alive but irrelevant to this single act of making one cup right.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">12</div>
+                <div class="prompt-title">The Rain</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_12_THE_RAIN.png" alt="The Rain" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">35mm Kodak Portra 400, 50mm, shot from inside the cafe looking toward the window. A rainy day at the window seat — her reflection ghosted in the glass, overlapping with the grey rain streaking down outside, two images of her at once. She&#x27;s sitting sideways on the bench with her knees pulled up, an oversized cardigan falling off one shoulder, bare feet tucked under her because she slipped her shoes off an hour ago. Condensation beading on the inside of the window glass, some drops merging into slow rivers that catch the warm interior light and glow orange. A cream &quot;Drip&quot; mug on the sill beside her, steam still rising in a thin curl — she&#x27;s been nursing this one, refilling it from a small ceramic pot the barista left. The warm amber interior reflected in the wet glass fighting the cold grey street outside: parked cars, a blurred umbrella passing, the crosswalk paint cracking. Her fingers tracing an absent line through the condensation, a small clear streak revealing the rain beyond. A worn leather journal open on her lap, the pages slightly warped from humidity, a pen wedged in the spine. The cafe behind her warm and occupied — voices low, the espresso machine hissing, someone laughing once. Window light flat and diffused through the overcast sky, no hard shadows, everything soft. Film grain heavier than usual because Portra goes grainy in low light. The whole frame split between warm and cold, inside and out, her and everything else.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">13</div>
+                <div class="prompt-title">The Read</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_13_THE_READ.png" alt="The Read" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">35mm Kodak Portra 400, 85mm, f/1.8, shallow depth of field focused on his hands and the open book. Someone deep in a paperback at the corner table — head tilted forward, reading glasses slid low on the nose, completely gone into the pages. The book cracked open flat, spine white and splitting, a water stain on the bottom corner from a cup set down months ago in a different cafe. His &quot;Drip&quot; mug beside the book, forgotten and going cold — the surface of the coffee still, a faint skin forming, the cream ceramic stained dark at the inside rim from a hundred refills. One hand flat on the table holding the book open, the other resting on his jaw, index finger pressed against his temple. A burnt orange &quot;Drip&quot; napkin crumpled beside the mug, used once and discarded. The table scarred and carved — someone scratched initials into the wood years ago and the groove has filled with dark coffee residue. Window light from behind and to the right, wrapping around his shoulder and catching the page edges, making the paper glow warm white. The cafe alive around him — a barista calling out a name, chairs scraping, someone&#x27;s bag hitting the floor — but none of it reaches him. He&#x27;s in the book. The coffee will be cold when he surfaces. Behind him: warm figures moving in soft bokeh, hanging Edison bulbs, a shelf of mismatched ceramics. Film grain throughout, Portra pulling the wood tones warm and the shadows into soft olive, the whole frame quiet inside the noise.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">14</div>
+                <div class="prompt-title">The Close</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_14_THE_CLOSE.png" alt="The Close" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, 35mm lens, Kodak Portra 400, the last golden light of the day coming through the windows low and horizontal, stretching long amber rectangles across the worn wood floor. Closing time at Drip. Chairs going up on tables — some already inverted with their legs pointing up like a small forest, one still spinning slowly where it was just placed. The barista behind the counter wiping down the espresso machine with a damp cloth, moving in the unhurried rhythm of someone who&#x27;s done this a thousand times, their &quot;Drip&quot; apron untied and hanging loose. The pastry case empty and cleaned, the glass reflecting the warm room back at itself. A mop bucket near the door, the floor half-done — the wet side dark and reflective, the dry side showing every scuff and stain of the day. The chalkboard menu partially erased, the prices ghosting through the wipe marks. A &quot;Drip&quot; cream mug left on a table near the window — the last customer&#x27;s, a dark ring inside and a lipstick trace on the rim, waiting to be collected. The day&#x27;s residue everywhere: a crumpled napkin under a chair, grounds scattered near the grinder, a forgotten scarf draped over a coat hook by the door. A small radio on the back shelf playing something nobody&#x27;s really listening to. Through the window: the street going blue as the sun drops, headlights beginning to appear. Warm and quiet, the space exhaling. Film grain heavy in the long shadows, Portra making the fading light honeyed and thick, the whole frame tender with the day&#x27;s ending.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">15</div>
+                <div class="prompt-title">The Roast</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/DRIP/DRIP_15_THE_ROAST.png" alt="The Roast" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot, 50mm, 35mm Kodak Portra 400, warm tungsten light from a caged work lamp clamped to a shelf overhead, mixing with soft window light from a small frosted pane to the left. Behind the scenes at Drip — the roasting room. A small-batch drum roaster mid-cycle, the drum rotating slow, the viewing window glowing amber with tumbling beans inside. Thin smoke curling from the exhaust pipe, catching the overhead light and drifting in lazy threads toward the ceiling. Someone leaning in to check the color of beans through the sample trier — pulling the rod out slowly, a small pile of beans in the scoop ranging from cinnamon to chestnut, not quite there yet. Their hands stained dark at the fingertips from handling raw green coffee all morning, a leather work apron over a plain white tee, sleeves pushed to the elbows. Burlap sacks of green beans stacked against the brick wall behind them — &quot;Colombia Huila&quot; stenciled in faded ink on one, &quot;Ethiopia Yirgacheffe&quot; on another, a torn one patched with packing tape and leaking a few green beans onto the concrete floor. A clipboard hanging from a nail on the wall with roast profiles logged in pencil, times and temperatures in cramped handwriting. The concrete floor dusted with chaff — papery silver-brown flakes that collect in every corner and crack. A cream &quot;Drip&quot; mug on the workbench, half-drunk, sitting on a copy of a roasting manual with coffee rings on the cover. A digital thermometer trailing a wire into the drum, the readout showing 401F. The smell almost visible — the way heat shimmers above the roaster, the chaff floating through the lamp light. Film grain heavy in the warm shadows, Portra turning the tungsten light deep gold, the whole frame industrial and intimate at once.</div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section>
+    <div class="container">
+        <div class="section-label">Usage</div>
+        <h2 class="section-title">Tips for ChatGPT</h2>
+        <div class="section-line"></div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div class="tip-text"><strong>Start with the style lock</strong> &mdash; paste it as your first message in every new ChatGPT session</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div class="tip-text"><strong>Keep it warm</strong> &mdash; if the image feels cold, say "warmer tones, more golden morning light"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div class="tip-text"><strong>Never use flash</strong> &mdash; Drip is all soft window light. Remind ChatGPT if it adds flash</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div class="tip-text"><strong>Name the brand</strong> &mdash; always mention "Drip" on cups, napkins, signage to keep branding consistent</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div class="tip-text"><strong>Embrace imperfection</strong> &mdash; coffee rings, worn wood, imperfect latte art makes it feel real</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-tagline">Drip Cafe. 15 shots. Warm light. Worn wood. Every frame branded.</div>
+    <div class="footer-brand">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+</body>
+</html>

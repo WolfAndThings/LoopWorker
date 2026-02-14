@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Hotel &mdash; 15 ChatGPT Prompts | Loop.Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00CED1;
+            --secondary: #FFDAB9;
+            --extra: #B8860B;
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #0d0d0d;
+            --text: #f5f5f5;
+            --text-muted: #777777;
+            --border: #1e1e1e;
+            --glow-primary: rgba(0, 206, 209, 0.25);
+            --glow-secondary: rgba(255, 218, 185, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        /* COVER */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 40% 30% at 50% 40%, var(--glow-primary), transparent),
+                radial-gradient(ellipse 30% 25% at 70% 60%, var(--glow-secondary), transparent);
+            animation: coverPulse 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes coverPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            border: 1px solid rgba(255, 218, 185, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .cover h1 {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-weight: 700;
+            font-size: clamp(4rem, 12vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .cover h1 .line1 { color: var(--primary); display: block; }
+        .cover h1 .line2 { color: var(--secondary); display: block; }
+        .cover-sub {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        .cover-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            max-width: 500px;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 2rem auto 0;
+            border-radius: 2px;
+        }
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 0; }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .section-line {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
+        }
+
+        /* BRAND DNA */
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .dna-block h3 {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dna-block ul { list-style: none; }
+        .dna-block li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .dna-block li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .dna-block li strong { color: var(--secondary); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 180px;
+        }
+        .swatch-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.08);
+        }
+        .swatch-info { font-size: 0.8rem; }
+        .swatch-name { font-weight: 500; color: var(--text); }
+        .swatch-hex { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .swatch-usage { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+
+        /* Brand Type */
+        .brand-type {
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        /* STYLE LOCK */
+        .style-lock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .style-lock-header {
+            background: linear-gradient(135deg, rgba(0, 206, 209, 0.15), rgba(255, 218, 185, 0.1));
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .style-lock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .style-lock-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .style-lock-body { padding: 1.5rem; }
+        .style-lock-body pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .style-lock-instruction {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 206, 209, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 206, 209, 0.1);
+        }
+
+        /* PROMPT SECTION */
+        .prompt-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .prompt-section-title {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .prompt-section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            margin-left: auto;
+        }
+
+        /* Prompt Cards */
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover { border-color: #2a2a2a; }
+        .prompt-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .prompt-title {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .prompt-body { padding: 1.5rem; }
+        .prompt-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #bbb;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Prompt Images */
+        .prompt-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: block;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+        }
+
+        /* Cover Logo */
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--glow-primary));
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .tip-num {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .tip-text { font-size: 0.9rem; color: var(--text); }
+        .tip-text strong { color: var(--secondary); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-tagline {
+            font-family: 'Cormorant Garamond', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        .footer-brand {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* LOGO GRID */
+        .logo-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .logo-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Logo Warning */
+        .logo-warning {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(214, 40, 40, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .dna-grid { grid-template-columns: 1fr; }
+            .swatch { flex: 1 1 100%; }
+            .cover h1 { font-size: 3.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: #0a0a0a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+            .cover::before { display: none; }
+            section { padding: 2rem 0; }
+            .prompt-card { break-inside: avoid; }
+            .prompt-section-header { break-after: avoid; }
+            .tip-card { break-inside: avoid; }
+            @page { margin: 0.75in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+    <div class="cover-content">
+        <img src="../../logos/STAY/stay_logo_v1.png" alt="Stay Hotel Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-badge">A Complete AI Brand Asset Pack</div>
+        <h1>
+            <span class="line1">Stay</span>
+            <span class="line2">Hotel</span>
+        </h1>
+        <div class="cover-sub">15 ChatGPT Prompts</div>
+        <div class="cover-divider"></div>
+        <p class="cover-desc">Every shot styled. Every frame branded. A complete visual identity system built for ChatGPT image generation.</p>
+    </div>
+    <div class="cover-footer">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+<!-- BRAND DNA -->
+<section>
+    <div class="container">
+        <div class="section-label">Identity</div>
+        <h2 class="section-title">Brand DNA</h2>
+        <div class="section-line"></div>
+
+        <div class="brand-type">
+            <strong>Bright boutique luxury hotel</strong> &mdash; $3K/night, warm, aspirational
+        </div>
+
+        <h3 style="font-family:'Cormorant Garamond',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--secondary);margin-bottom:1rem;">Color Palette</h3>
+        <div class="color-grid">
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#00CED1;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Teal</div>
+                    <div class="swatch-hex">#00CED1</div>
+                    <div class="swatch-usage">Primary &mdash; accents, towels, water</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FFDAB9;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Soft Peach</div>
+                    <div class="swatch-hex">#FFDAB9</div>
+                    <div class="swatch-usage">Secondary &mdash; light, warmth, sunrise</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FFF8DC;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Cream</div>
+                    <div class="swatch-hex">#FFF8DC</div>
+                    <div class="swatch-usage">Linens, marble, base tones</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#B8860B;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Brass Gold</div>
+                    <div class="swatch-hex">#B8860B</div>
+                    <div class="swatch-usage">Fixtures, hardware, luxury details</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dna-grid" style="margin-top:2.5rem;">
+            <div class="dna-block">
+                <h3>Photography Mood</h3>
+                <ul>
+                    <li><strong>Bright</strong> &mdash; morning light flooding marble surfaces</li>
+                    <li><strong>Luxurious</strong> &mdash; $3K/night materials you can feel</li>
+                    <li><strong>Warm</strong> &mdash; golden hour and peach sunrise</li>
+                    <li><strong>Intimate</strong> &mdash; private moments in beautiful spaces</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Photography Style</h3>
+                <ul>
+                    <li>Kodak Vision3 500T, bright natural light</li>
+                    <li>Warm golden tones, cinematic</li>
+                    <li>Natural morning light and golden hour</li>
+                    <li>BRIGHT luxury &mdash; never dark, noir, or moody</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Cast / People</h3>
+                <ul>
+                    <li>Young, attractive, aspirational</li>
+                    <li>Barefoot in robes, contemplative</li>
+                    <li>Real moments in unreal spaces</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Logo Placement</h3>
+                <div class="logo-items">
+                    <div class="logo-item">Robes</div>
+                    <div class="logo-item">Towels</div>
+                    <div class="logo-item">Stationery</div>
+                    <div class="logo-item">Room keys</div>
+                    <div class="logo-item">Foil chocolates</div>
+                    <div class="logo-item">Neon exterior sign</div>
+                </div>
+                <div class="logo-warning">NEVER place logos on marble, fixtures, or architectural elements</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STYLE LOCK -->
+<section>
+    <div class="container">
+        <div class="section-label">Setup</div>
+        <h2 class="section-title">ChatGPT Style Lock</h2>
+        <div class="section-line"></div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste this at the start of every ChatGPT session to lock the visual style across all 15 prompts.</p>
+
+        <div class="style-lock-card">
+            <div class="style-lock-header">
+                <div class="style-lock-dot"></div>
+                <div class="style-lock-dot" style="background:var(--secondary);"></div>
+                <div class="style-lock-dot" style="background:var(--text-muted);"></div>
+                <span>style-lock.txt</span>
+            </div>
+            <div class="style-lock-body">
+                <pre>I&#x27;m creating images for a bright boutique luxury hotel called &quot;Stay&quot; ($3K/night).
+
+Visual Style:
+- Shot on Kodak Vision3 500T with warm golden tones
+- Bright natural light dominant + warm tungsten accents
+- Film grain visible, cinematic quality
+- Teal (#00CED1) accents against warm peach (#FFDAB9) light and bright whites
+
+Brand Rules:
+- &quot;Stay&quot; branding appears on: robes, towels, stationery, room keys, foil chocolates, signage
+- NEVER place logos on marble, fixtures, or architectural elements
+- Bright boutique luxury — Calacatta marble, brushed brass with patina, Belgian linen, terrazzo
+- Ocean views, skylights, double-height ceilings
+- BRIGHT and warm — never dark, noir, or moody
+
+Cast: Young, attractive, aspirational. Barefoot in robes, contemplative.
+
+Keep this style consistent across all images I request.</pre>
+            </div>
+        </div>
+        <div class="style-lock-instruction">
+            Copy the text above and paste it as your first message in a new ChatGPT conversation. Then send prompts from the sections below one at a time.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROMPTS -->
+<section>
+    <div class="container">
+        <div class="prompt-section-header">
+            <div class="prompt-section-icon">&#127960;</div>
+            <div class="prompt-section-title">Prompts</div>
+            <div class="prompt-section-count">15 prompts</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">1</div>
+                <div class="prompt-title">The Suite</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_01_THE_SUITE.png" alt="The Suite" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, 35mm at f/2.8, Kodak Vision3 500T. Dawn pouring through twelve-foot ocean windows, peach light spilling across Calacatta marble floors so bright the veining throws shadows. She&#x27;s standing at the glass in an untied white &quot;Stay&quot; robe, looking directly into camera like you just walked in — wet hair, no makeup, barefoot, a Cartier Tank on her wrist catching sunrise. He&#x27;s still tangled in Belgian linen behind her, one arm reaching across the empty side of the bed. Nightstand: a half-empty Ruinart rosé, a Diptyque Baies candle burned down to the brass wick holder, her Celine sunglasses folded on a leather-bound room service menu. Teal throw pillow on the terrazzo floor where it landed. Brass headboard with honest patina in the joinery. The suite is massive — you can see the freestanding tub through an open archway, the bathroom skylight throwing its own column of light. Through the window: the infinity pool three stories down, one early swimmer making laps, palms sharp against pink sky. Film grain, peach and warm, shallow depth of field softening the ocean into gold.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">2</div>
+                <div class="prompt-title">The Bathroom</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_02_THE_BATHROOM.png" alt="The Bathroom" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from the doorway, 28mm wide, Kodak Vision3 500T. Morning skylight flooding the entire bathroom white-bright, steam curling through the column of light. She&#x27;s in the freestanding tub, only her shoulders and collarbones above the water, head tilted back against the marble rim, eyes closed. Her Hermès Clic H bracelet on the tub ledge next to an uncapped Le Labo Santal 33 bottle, oil trailing the stone. Calacatta marble floor to ceiling, grey veining catching light like brushstrokes. Brushed brass rain shower behind her still dripping — water beading on the glass partition. A white &quot;Stay&quot; towel draped heavy over a heated brass rail, another on the terrazzo floor where she dropped it stepping in. Her bare footprints still wet on the stone. Double vanity in the mirror reflection: his Byredo cologne, her Charlotte Tilbury compact left open. The space is enormous — the skylight alone is four feet across, pouring so much light the room glows. Film grain, warm, the steam making the highlights bloom soft.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">3</div>
+                <div class="prompt-title">The Lobby</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_03_THE_LOBBY.png" alt="The Lobby" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide establishing shot, 24mm, Kodak Vision3 500T, morning light flooding through double-height glass. The lobby as a cathedral — terrazzo floors stretching thirty feet to the brass-framed reception desk, a fifteen-foot areca palm in a teal ceramic planter, ocean visible through every window. She&#x27;s walking toward camera, direct eye contact, linen wrap dress, a woven leather bag over her shoulder, tan legs, flat sandals, sunglasses pushed into hair still salty from yesterday. He&#x27;s three steps behind wheeling two Rimowa suitcases, white button-down untucked, white sneakers, looking up at the double-height ceiling like he can&#x27;t believe this place. A staff member in cream linen crossing the frame with a tray — two welcome drinks in teal glasses. On the teal velvet sofa by the window: a woman reading barefoot, her sandals kicked off on the terrazzo beside a straw tote, a magazine spine visible. Fresh peonies on the brass console table, one petal fallen. Through the entrance: a white Range Rover still idling in the cobblestone drive, the valet walking back with the keys. Film grain, cinematic, bright, the scale of the space making everyone in it elegant.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">4</div>
+                <div class="prompt-title">The Rooftop</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_04_THE_ROOFTOP.png" alt="The Rooftop" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Cinematic wide, 35mm, Kodak Vision3 500T, the twenty minutes of golden hour where everything turns liquid. She&#x27;s in the infinity pool, arms folded on the edge, chin on her forearms, looking directly into camera — unbothered, devastating. Water droplets on her shoulders catching gold. He&#x27;s on a white lounge daybed behind her, shirtless, tan, an Omega Seamaster on his wrist, holding a paperback he hasn&#x27;t turned a page of in ten minutes. A Ruinart Blanc de Blancs in a brass ice bucket beside him, two crystal flutes half-full, condensation rolling down the glass. A &quot;Stay&quot; towel thrown over the next lounger, still holding the shape of someone who left. Travertine deck stretching wide — teal umbrellas closed for sunset, their brass poles catching gold. Three stories below: the white beach, a couple walking the waterline as silhouettes. The whole property visible from up here — white facade, brass balcony rails, teal accents punctuating the architecture. Palms casting long shadows across stone. Film grain, peach and gold, the light making every wet surface glow.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">5</div>
+                <div class="prompt-title">The Balcony</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_05_THE_BALCONY.png" alt="The Balcony" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot, 50mm at f/1.8, Kodak Vision3 500T, warm morning pouring in from the right. She&#x27;s leaning on the brass railing with her back to the suite, looking over her shoulder into camera — a half-smile like she knows something you don&#x27;t. Barefoot on warm stone, his oversized white linen shirt, sleeves rolled to the elbows. Her coffee cooling on the railing in a teal ceramic cup. Hair half-dry, salt-textured from yesterday&#x27;s swim. A thin gold chain, a Cartier Love bracelet, no other jewelry. Through the open balcony doors behind her: the suite in beautiful chaos — sheets pulled half off the bed, room service tray on the brass luggage rack with a demolished croissant plate and two pressed juices barely touched, her Jacquemus dress from dinner draped over the chair, his loafers kicked off by the door, her flats next to them. The brass railing developing verdigris where sea air has been working it for years. Below: the infinity pool, staff setting up loungers, the ocean flat and silver in early light. Film grain, shallow depth of field turning the water to cream-colored bokeh, bright and warm.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">6</div>
+                <div class="prompt-title">The Key</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_06_THE_KEY.png" alt="The Key" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Extreme close-up, macro, Kodak Vision3 500T, warm tungsten from desk lamps. A brass room key sliding across book-matched travertine — the leather tassel trailing, the brass worn smooth from a decade of hands, room number stamped deep: 401. Her fingers reaching for it — fresh manicure, nude tone, a thin gold bracelet and a Cartier Love ring catching the light. His hand on the desk beside hers — tanned, relaxed, a vintage diver&#x27;s watch with a worn leather strap. The reception desk surface: one long scratch polished into the stone over the years, a small brass bell, a white garden rose in a teal bud vase, the stem cut at an angle. A &quot;Stay&quot; envelope between them — heavy cream stock, their name in the manager&#x27;s fountain pen cursive, the wax seal unbroken. The lobby soft and blown out behind them — the double-height windows, ocean light, the areca palm. Film grain, specular highlights dancing on every brass surface, shallow depth of field making everything beyond their hands dissolve to warm gold.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">7</div>
+                <div class="prompt-title">The Hallway</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_07_THE_HALLWAY.png" alt="The Hallway" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from the end of the corridor looking back, 35mm, Kodak Vision3 500T, backlit by the ocean window turning them into glowing outlines. Two guests walking toward camera in white &quot;Stay&quot; robes — she&#x27;s slightly ahead, turning back to look at him, reaching her hand behind her, laughing at something he just said. He&#x27;s carrying a brass champagne bucket in one hand, two crystal flutes upside-down between his fingers in the other, trying not to spill. Both in &quot;Stay&quot; slippers on terrazzo polished by fifty years of barefoot guests. Brass wall sconces every eight feet making warm pools on the white walls, the light mixing with ocean daylight from the window behind. Their door ajar at the end — 401 in brass numerals, warm light spilling from inside. The corridor stretching long and elegant, five doors on each side. A room service tray outside another door: empty oyster shells, a champagne bottle upside-down in the bucket. Someone else&#x27;s night. Film grain, golden, lens flare from the backlight, slight motion blur on their robes.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">8</div>
+                <div class="prompt-title">The Restaurant</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_08_THE_RESTAURANT.png" alt="The Restaurant" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium wide, 35mm, Kodak Vision3 500T, morning light flooding through open-air arches framing the ocean. The restaurant as a space first — arched ceiling, brass pendant lights, terrazzo floor, white linen tables set with teal napkins folded into fans, brass cutlery gleaming. Then the couple: she&#x27;s watching him talk, chin in her hand, espresso held but cooling, a croissant torn in half on a white plate. He&#x27;s mid-sentence, gesturing with a piece of bread, not noticing how she&#x27;s looking at him. She&#x27;s in a cream linen top, gold hoops, hair still messy from the pillow. He&#x27;s in a white linen shirt, sleeves rolled, tan forearms, Ray-Ban Wayfarers folded on the table. Between them: a bread basket, local honey in a brass pot, a small teal vase with a single white orchid. Through the archway: the pool terrace, a woman in a straw hat reading at a table for one, a waiter crossing with a tray of fresh juice. Beyond that: the ocean, flat and silver-blue. Other guests soft in the background — a family, an older couple with wine at 10am, nobody checking the time. Film grain, warm and golden, shallow depth of field on her expression.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">9</div>
+                <div class="prompt-title">The Exterior</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_09_THE_EXTERIOR.png" alt="The Exterior" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide establishing shot, 24mm, Kodak Vision3 500T, sunrise hitting the white facade so the building glows peach. Stay from the beach — a white modernist structure, five stories, every balcony with brass rails catching morning light, towels draped over three of them, someone on the top floor in a robe leaning on the rail with coffee. The rooftop infinity pool visible at the crown, water reflecting sky, one early swimmer. Ground level: the entrance — a cobblestone drive, a white Porsche 911 Targa parked at the door still dewy from the night, the valet stand empty this early. A couple walking toward the beach from the hotel, barefoot on the path, her white sundress catching a breeze, his hand on the small of her back, a &quot;Stay&quot; beach bag over her shoulder with teal towels poking out. Teal umbrellas on the pool terrace, closed like sleeping birds. Palms casting sharp morning shadows across white stone — bougainvillea climbing the south wall in magenta. The sky enormous behind the building, pink to blue, not a cloud. Film grain, cinematic wide, the kind of establishing shot that makes you want to book immediately.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">10</div>
+                <div class="prompt-title">The Turndown</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_10_THE_TURNDOWN.png" alt="The Turndown" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from the bedroom doorway, 35mm, Kodak Vision3 500T, the last warm light of sunset mixing with brass lamp tungsten. The suite at evening turndown — the bed perfectly made, Belgian linen pulled tight with hospital corners, a teal cashmere throw folded at the foot, two gold &quot;Stay&quot; foil chocolates on each pillow. Through the open balcony doors: a sunset so absurd it looks painted — sky graduating from peach to tangerine to deep rose, the ocean a sheet of liquid copper, sheer white curtains lifting in the breeze and falling, lifting and falling. A handwritten note on the nightstand in the manager&#x27;s cursive on cream &quot;Stay&quot; stationery, a brass pen beside it. Slippers placed on the terrazzo at the foot of the bed, perfectly angled. A white robe on the brass hook, the &quot;Stay&quot; monogram catching lamplight. On the side table: a Diptyque Figuier candle lit, flame reflected in the brass tray, a small glass carafe of water with a lemon round floating. Her Bottega Veneta clutch and his Tom Ford wallet on the dresser — they&#x27;re out at dinner somewhere, the room waiting for them to come back. Film grain, golden hour fading to tungsten, bright even at dusk, the kind of room that makes you stand in the doorway.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">11</div>
+                <div class="prompt-title">The Beach</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_11_THE_BEACH.png" alt="The Beach" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, 24mm, Kodak Vision3 500T, early morning light turning the sand warm cream and the shallows translucent teal. The hotel&#x27;s private beach stretching wide — a row of teal umbrellas with brass poles planted in the sand, white canvas loungers in pairs, each with a folded &quot;Stay&quot; towel draped over the armrest. A couple walking the waterline toward camera, barefoot, the water rushing over their ankles, her white linen coverup catching a breeze, his hand holding hers loosely, both looking out at the ocean like they forgot what day it is. She&#x27;s carrying a woven &quot;Stay&quot; beach bag over her shoulder — teal towels poking out the top, a paperback spine visible, sunscreen tucked in the side pocket. His Ray-Bans pushed up into salt-dried hair. Behind them: the hotel rising white and warm against a cloudless sky, every balcony visible, someone on the third floor leaning on the brass rail with coffee, a towel drying over another. The infinity pool glinting at the roofline. Wet footprints trailing behind them in the packed sand, already dissolving. A brass beach shower at the path&#x27;s edge, water pooled on the stone beneath it. Bougainvillea spilling over the low wall separating hotel grounds from sand. Film grain, peach morning warmth, shallow depth of field softening the hotel into a glowing white mass behind them.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">12</div>
+                <div class="prompt-title">The Spa</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_12_THE_SPA.png" alt="The Spa" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot, 50mm at f/2, Kodak Vision3 500T, soft diffused daylight pouring through a frosted glass wall, the whole room glowing white and warm. The treatment room — white Calacatta marble slab table, brass fixtures on the wall, a row of warm brass sconces casting gentle halos on the stone. She&#x27;s post-treatment, sitting upright on the edge of the table in a white &quot;Stay&quot; robe, one leg tucked under her, eyes half-closed, a calm that&#x27;s almost meditative. Her hair wrapped in a white towel, her skin still dewy from oil, bare collarbones catching the diffused light. On the brass side cart: a ceramic bowl of warm stones, a small teal ceramic vessel of eucalyptus oil with a thin trail of steam rising, white orchids in a low brass dish, rolled white towels stacked three high. The floor is honed white marble with grey veining — her &quot;Stay&quot; slippers placed neatly beside the table. A glass carafe of cucumber water on a brass tray, one glass poured, a sprig of mint floating. Through the frosted partition: the silhouette of another guest on a table, a therapist&#x27;s hands mid-motion, soft and indistinct. Teal accent tiles running as a single stripe along the base of the wall. The room smells the way it looks — clean stone, warm oil, linen. Film grain, bright and serene, the warmth coming from the light itself rather than any single source.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">13</div>
+                <div class="prompt-title">The Arrival</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_13_THE_ARRIVAL.png" alt="The Arrival" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, 28mm, Kodak Vision3 500T, late afternoon golden light hitting the white facade so the entire building radiates peach. The cobblestone drive curving up to the entrance — a cream Mercedes convertible pulling in, top down, her scarf still catching wind as the car slows, his hand resting easy on the wheel, both in sunglasses, both tan, the kind of arrival that makes the valet straighten his posture. The valet in cream linen and white sneakers stepping forward, one hand raised in greeting, the other reaching for the driver&#x27;s door. The entrance behind him: a twelve-foot archway framed in brushed brass, the glass doors open, warm lobby light spilling onto the stone, a doorman in cream holding a tray with two welcome drinks in teal glasses with condensation already running. Cobblestones worn smooth and warm underfoot — a single bougainvillea branch reaching across from the climbing wall, dropping two magenta petals on the hood of the car. Two Rimowa suitcases visible in the back seat, a straw hat, a leather weekender. The brass &quot;Stay&quot; lettering above the archway catching sun — not a sign, just five letters set into white stone, oxidized to verdigris at the edges. Through the archway: the lobby&#x27;s terrazzo floor, the areca palm, a guest crossing in the background barefoot in a robe. Palms flanking the drive casting long angular shadows across cobblestone. Film grain, cinematic, golden, the first impression that justifies everything.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">14</div>
+                <div class="prompt-title">The Night</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_14_THE_NIGHT.png" alt="The Night" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium wide, 35mm at f/2, Kodak Vision3 500T, warm tungsten from every lamp in the suite mixing with candlelight, the room glowing amber and peach — NOT dark, never dark, the light is everywhere. The balcony doors thrown wide open, sheer white curtains floating inward on the warm night breeze, city lights twinkling in the distance like scattered brass pins, the ocean a dark mirror reflecting a thin gold line from the boardwalk below. She&#x27;s curled on the sofa in his white linen shirt and nothing else, legs tucked, a glass of Sancerre in her hand, watching him. He&#x27;s on the balcony leaning on the brass railing, profile to camera, wine glass resting on the rail, looking out at the lights with the kind of stillness you only get on the third night. Between them on the marble coffee table: a brass tray with a half-eaten cheese board — aged Comte, fig jam, torn bread, a brass knife — and two lit Diptyque candles throwing dancing shadows on the Calacatta wall. The suite behind them warm and lived-in: Belgian linen sheets pulled back, &quot;Stay&quot; robes tossed on the brass luggage rack, her heels kicked off by the door, his watch on the nightstand next to a &quot;Stay&quot; foil chocolate wrapper already torn open. A teal throw pillow on the floor, a room service menu open on the bed. Every brass surface in the room — the headboard, the sconces, the railing — catching candlelight and multiplying it. Film grain, warm tungsten dominant, the kind of night where nobody checks the time.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">15</div>
+                <div class="prompt-title">The Departure</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/STAY/STAY_15_THE_DEPARTURE.png" alt="The Departure" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from inside the lobby looking out, 35mm, Kodak Vision3 500T, bright morning light flooding through the entrance archway so the cobblestone drive glows white-gold. She&#x27;s in the doorway, half-turned, looking back into the lobby over her shoulder — sunglasses pushed up, a look that&#x27;s equal parts grateful and gutted, like she&#x27;s memorizing the terrazzo, the areca palm, the brass desk where they got the key four nights ago. A woven tote over her shoulder, her white sundress catching morning light, tan lines visible at the straps. He&#x27;s already outside, loading two Rimowa cases into the trunk of the waiting car, white linen shirt untucked, one hand on the roof, pausing to look back at the building one more time. A staff member at the door in cream linen, one hand raised in a warm wave, the other holding a small &quot;Stay&quot; gift bag — cream paper, teal tissue, a handwritten note visible at the top. On the brass console table inside the entrance: a last arrangement of white peonies, one petal freshly fallen on the terrazzo. Through the archway behind her: the morning ocean, flat and silver, the pool terrace empty except for one early swimmer and a row of white loungers with folded teal towels waiting for the next guests. The brass &quot;Stay&quot; letters above the arch catching direct sun, throwing small shadows on the white stone. Her &quot;Stay&quot; slippers left behind at the door — she switched to sandals, but couldn&#x27;t bring herself to leave the slippers in the room. Film grain, bright and bittersweet, morning peach light, the last frame of the trip.</div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section>
+    <div class="container">
+        <div class="section-label">Usage</div>
+        <h2 class="section-title">Tips for ChatGPT</h2>
+        <div class="section-line"></div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div class="tip-text"><strong>Start with the style lock</strong> &mdash; paste it as your first message in every new ChatGPT session</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div class="tip-text"><strong>Keep it bright</strong> &mdash; if the image goes dark or moody, say "brighter, more morning light, warm not noir"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div class="tip-text"><strong>Specify materials</strong> &mdash; "Calacatta marble," "brushed brass," "Belgian linen" keeps the luxury consistent</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div class="tip-text"><strong>Name the brand</strong> &mdash; always mention "Stay" on robes, towels, stationery to keep branding present</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div class="tip-text"><strong>Push the warmth</strong> &mdash; "golden hour tones," "peach sunrise light" keeps the palette on brand</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-tagline">Stay Hotel. 15 shots. Bright luxury. Warm light. Every frame branded.</div>
+    <div class="footer-brand">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+</body>
+</html>

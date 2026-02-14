@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beef Boy Burgers &mdash; 5 ChatGPT Prompts | Loop.Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D62828;
+            --secondary: #F7B801;
+            --extra: #8B4513;
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #0d0d0d;
+            --text: #f5f5f5;
+            --text-muted: #777777;
+            --border: #1e1e1e;
+            --glow-primary: rgba(214, 40, 40, 0.3);
+            --glow-secondary: rgba(247, 184, 1, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        /* COVER */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 40% 30% at 50% 40%, var(--glow-primary), transparent),
+                radial-gradient(ellipse 30% 25% at 70% 60%, var(--glow-secondary), transparent);
+            animation: coverPulse 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes coverPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            border: 1px solid rgba(247, 184, 1, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .cover h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: clamp(4rem, 12vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .cover h1 .line1 { color: var(--primary); display: block; }
+        .cover h1 .line2 { color: var(--secondary); display: block; }
+        .cover-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        .cover-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            max-width: 500px;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 2rem auto 0;
+            border-radius: 2px;
+        }
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 0; }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .section-line {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
+        }
+
+        /* BRAND DNA */
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .dna-block h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dna-block ul { list-style: none; }
+        .dna-block li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .dna-block li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .dna-block li strong { color: var(--secondary); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 180px;
+        }
+        .swatch-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.08);
+        }
+        .swatch-info { font-size: 0.8rem; }
+        .swatch-name { font-weight: 500; color: var(--text); }
+        .swatch-hex { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .swatch-usage { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+
+        /* Brand Type */
+        .brand-type {
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        /* STYLE LOCK */
+        .style-lock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .style-lock-header {
+            background: linear-gradient(135deg, rgba(214, 40, 40, 0.15), rgba(247, 184, 1, 0.1));
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .style-lock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .style-lock-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .style-lock-body { padding: 1.5rem; }
+        .style-lock-body pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .style-lock-instruction {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(247, 184, 1, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(247, 184, 1, 0.1);
+        }
+
+        /* PROMPT SECTION */
+        .prompt-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .prompt-section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .prompt-section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            margin-left: auto;
+        }
+
+        /* Prompt Cards */
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover { border-color: #2a2a2a; }
+        .prompt-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .prompt-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .prompt-body { padding: 1.5rem; }
+        .prompt-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #bbb;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Prompt Images */
+        .prompt-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: block;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+        }
+
+        /* Cover Logo */
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--glow-primary));
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .tip-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .tip-text { font-size: 0.9rem; color: var(--text); }
+        .tip-text strong { color: var(--secondary); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        .footer-brand {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* LOGO GRID */
+        .logo-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .logo-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Logo Warning */
+        .logo-warning {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(214, 40, 40, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .dna-grid { grid-template-columns: 1fr; }
+            .swatch { flex: 1 1 100%; }
+            .cover h1 { font-size: 3.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: #0a0a0a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+            .cover::before { display: none; }
+            section { padding: 2rem 0; }
+            .prompt-card { break-inside: avoid; }
+            .prompt-section-header { break-after: avoid; }
+            .tip-card { break-inside: avoid; }
+            @page { margin: 0.75in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+    <div class="cover-content">
+        <img src="../../logos/BEEFBOY/beefboy_logo_v1.png" alt="Beef Boy Burgers Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-badge">A Complete AI Brand Asset Pack</div>
+        <h1>
+            <span class="line1">Beef Boy</span>
+            <span class="line2">Burgers</span>
+        </h1>
+        <div class="cover-sub">5 ChatGPT Prompts</div>
+        <div class="cover-divider"></div>
+        <p class="cover-desc">Every shot styled. Every frame branded. A complete visual identity system built for ChatGPT image generation.</p>
+    </div>
+    <div class="cover-footer">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+<!-- BRAND DNA -->
+<section>
+    <div class="container">
+        <div class="section-label">Identity</div>
+        <h2 class="section-title">Brand DNA</h2>
+        <div class="section-line"></div>
+
+        <div class="brand-type">
+            <strong>Smash burger food truck</strong> &mdash; bold, greasy, unapologetic
+        </div>
+
+        <h3 style="font-family:'Oswald',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--secondary);margin-bottom:1rem;">Color Palette</h3>
+        <div class="color-grid">
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#D62828;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Ketchup Red</div>
+                    <div class="swatch-hex">#D62828</div>
+                    <div class="swatch-usage">Primary &mdash; logo, signage, trays</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#F7B801;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Mustard Yellow</div>
+                    <div class="swatch-hex">#F7B801</div>
+                    <div class="swatch-usage">Secondary &mdash; accents, fries, logo</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FFFFFF; border-color: rgba(255,255,255,0.2);"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">White</div>
+                    <div class="swatch-hex">#FFFFFF</div>
+                    <div class="swatch-usage">Text, wrappers, contrast</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#8B4513;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Grease Brown</div>
+                    <div class="swatch-hex">#8B4513</div>
+                    <div class="swatch-usage">Food tones, natural</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dna-grid" style="margin-top:2.5rem;">
+            <div class="dna-block">
+                <h3>Photography Mood</h3>
+                <ul>
+                    <li><strong>Raw</strong> &mdash; messy, dripping, unapologetic</li>
+                    <li><strong>Flash</strong> &mdash; harsh on-camera flash, deep shadows</li>
+                    <li><strong>Indulgent</strong> &mdash; you can almost taste it</li>
+                    <li><strong>Chaotic</strong> &mdash; wrappers crumpled, sauce everywhere</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Photography Style</h3>
+                <ul>
+                    <li>On-camera flash, harsh shadows</li>
+                    <li>35mm film grain, slightly overexposed</li>
+                    <li>Food photography that makes you hungry</li>
+                    <li>Messy, not styled</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Cast / People</h3>
+                <ul>
+                    <li>Young, attractive, diverse</li>
+                    <li>Urban, thrifted fits, tattoos</li>
+                    <li>Actually eating, not posing</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Logo Placement</h3>
+                <div class="logo-items">
+                    <div class="logo-item">Burger wrappers</div>
+                    <div class="logo-item">Tray liners</div>
+                    <div class="logo-item">Soda cups</div>
+                    <div class="logo-item">Paper bags</div>
+                    <div class="logo-item">Stickers</div>
+                    <div class="logo-item">Menu boards</div>
+                    <div class="logo-item">Napkins</div>
+                    <div class="logo-item">Aprons</div>
+                </div>
+                <div class="logo-warning">NEVER place logos directly on food or drink items &mdash; no logos on burgers, cheese, buns, or fries</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STYLE LOCK -->
+<section>
+    <div class="container">
+        <div class="section-label">Setup</div>
+        <h2 class="section-title">ChatGPT Style Lock</h2>
+        <div class="section-line"></div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste this at the start of every ChatGPT session to lock the visual style across all 15 prompts.</p>
+
+        <div class="style-lock-card">
+            <div class="style-lock-header">
+                <div class="style-lock-dot"></div>
+                <div class="style-lock-dot" style="background:var(--secondary);"></div>
+                <div class="style-lock-dot" style="background:var(--text-muted);"></div>
+                <span>style-lock.txt</span>
+            </div>
+            <div class="style-lock-body">
+                <pre>I&#x27;m creating images for a smash burger restaurant called &quot;Beef Boy Burgers.&quot;
+
+Visual Style:
+- Shot on 35mm Kodak Portra 400
+- On-camera flash, harsh shadows, slightly overexposed highlights
+- Film grain visible, analog dust in flash light
+- Slightly off-center compositions
+- Ketchup red (#D62828) and mustard yellow (#F7B801) palette
+
+Brand Rules:
+- &quot;Beef Boy&quot; branding appears on: wrappers, cups, paper bags, aprons, signage, napkins, stickers
+- NEVER place logos directly on food or drink items
+- Minimum 3 micro-texture details per image
+- Always include environmental context
+- Imperfections: grease, crumpled paper, scuffed surfaces, food mess
+
+Cast: Young, attractive, diverse. Actually eating, not posing.
+
+Keep this style consistent across all images I request.</pre>
+            </div>
+        </div>
+        <div class="style-lock-instruction">
+            Copy the text above and paste it as your first message in a new ChatGPT conversation. Then send prompts from the sections below one at a time.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROMPTS -->
+<section>
+    <div class="container">
+        <div class="prompt-section-header">
+            <div class="prompt-section-icon">&#127828;</div>
+            <div class="prompt-section-title">Prompts</div>
+            <div class="prompt-section-count">5 prompts</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">11</div>
+                <div class="prompt-title">The Truck</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/BEEFBOY/BEEFBOY_11_THE_TRUCK.png" alt="The Truck" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide establishing shot, 24mm, on-camera flash punching into the night. The &quot;Beef Boy&quot; truck parked crooked on a dead-end street, the neon sign bolted above the service window buzzing ketchup red and mustard yellow, one letter flickering like it&#x27;s been doing that for months and nobody&#x27;s fixing it. Steam pouring through the window in a thick column, backlit by the interior tungsten, curling into the cold air and dissolving before it clears the roofline. The line — nine, ten people deep — snaking along wet asphalt, nobody holding umbrellas because it stopped raining twenty minutes ago but the ground hasn&#x27;t dried. Puddles reflecting the neon in broken ribbons, tire tracks cutting through the red glow. A girl at the front leaning on the counter, her silhouette sharp against the warm light inside. Someone near the back checking their phone, face lit blue from below. The truck&#x27;s chrome bumper dented and scuffed, a &quot;Beef Boy&quot; sticker peeling at one corner on the side panel. Condensation on the window glass streaking down in slow lines. Generator humming beneath the truck, exhaust pipe dripping. 35mm Kodak Portra 400, flash catching the steam and the wet asphalt simultaneously, harsh shadows thrown behind the people in line, film grain thick in the dark sky, analog dust frozen in the flash cone, chromatic aberration bleeding off the neon edges.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">12</div>
+                <div class="prompt-title">The Fry</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/BEEFBOY/BEEFBOY_12_THE_FRY.png" alt="The Fry" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Extreme close-up, macro distance, direct flash blasting the surface flat. A paper boat of fries — not arranged, dumped — salt crystals visible on every surface like tiny glass shards catching the flash individually. One fry snapped in half and leaking its soft interior, another bent at a right angle from being crammed against the side of the boat. Ketchup pooled in one corner of the paper boat, not dispensed neatly but squeezed in a thick uneven line, the surface already forming a skin where it&#x27;s been sitting. A second puddle where someone dragged a fry through and left a track like a tire through mud. The paper boat&#x27;s edges gone translucent with grease, darkening from white to amber where the oil soaked deepest, the &quot;Beef Boy&quot; logo printed on the side warping where the grease hit the ink. Individual grains of coarse salt scattered on the tray beneath the boat. A thumbprint in ketchup on the paper&#x27;s edge. One fry standing almost vertical, wedged between others, its tip glistening with oil. The grease sheen on every surface creating specular highlights that the flash turns into hard white points. 35mm Kodak Portra 400, depth of field so shallow the back fries dissolve to warm blur, film grain magnified at this distance, flash shadow of the paper boat edge cutting a hard line on the red tray beneath.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">13</div>
+                <div class="prompt-title">The Shake</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/BEEFBOY/BEEFBOY_13_THE_SHAKE.png" alt="The Shake" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium close-up, 50mm, direct on-camera flash. A thick vanilla milkshake in a wax &quot;Beef Boy&quot; cup — red and yellow logo sweating behind a curtain of condensation, droplets racing each other down the side and pooling on the counter in a wet ring. A hand gripping the cup mid-lift, knuckles cold and slightly pink, a braided friendship bracelet dark with age on the wrist, two silver rings on adjacent fingers. The straw — red striped, bent at the neck from being bitten — pulled slightly upward from the force of the shake&#x27;s thickness, a bead of milkshake clinging to the rim of the straw hole. The shake itself cresting just above the lid line, too full, a slow drip already running down the outside where someone tried to sip before the lid was on. The cup&#x27;s surface a battlefield of condensation trails and thumbprint smears where fingers wiped through the fog. Behind: the blurred glow of the menu board and the edge of a &quot;Beef Boy&quot; napkin dispenser, chrome and dented. The counter surface scratched stainless steel reflecting the flash as a blown-out streak. 35mm Kodak Portra 400, flash freezing every water droplet on the cup into individual bright points, harsh shadow thrown behind the cup onto the counter, film grain in the dark areas, the cold visible in the condensation.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">14</div>
+                <div class="prompt-title">The Regular</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/BEEFBOY/BEEFBOY_14_THE_REGULAR.png" alt="The Regular" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Direct flash, 50mm, portrait tight from chest up. A guy in his early thirties — not model-handsome, regular-handsome, the face of someone the staff calls by name before he reaches the window. Direct eye contact with the camera, no smile but the corners of his mouth saying he&#x27;s comfortable here. Five o&#x27;clock shadow, a scar through the tail of his left eyebrow from something he doesn&#x27;t talk about, ears slightly red from the cold. Faded black hoodie with the drawstrings chewed at the tips, a &quot;Beef Boy&quot; sticker on the chest he stuck there three visits ago and never peeled off. His usual order in front of him: double smash, no tomato, extra pickles, fries with mustard not ketchup — you can see the yellow instead of red in the paper boat. A &quot;Beef Boy&quot; cup with his name written in Sharpie on the side by someone behind the counter who didn&#x27;t have to ask. The wrapper already half-open because he started before sitting down. His hands resting on the table, wide and roughed up, a callus on the right palm. The booth behind him empty — he comes alone, always the same time, always the same seat. 35mm Kodak Portra 400, flash carving his features hard against the dark booth vinyl, shadow thrown at forty-five degrees on the wall, film grain heavy in the background, analog dust in the flash light.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">15</div>
+                <div class="prompt-title">The Close</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/BEEFBOY/BEEFBOY_15_THE_CLOSE.png" alt="The Close" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">On-camera flash, 35mm, shot from the service window looking in. End of the night — the cook alone in the truck, scraping the flat top with a bench scraper, both hands driving it forward, grease and char collecting in a dark ridge ahead of the blade. Their &quot;Beef Boy&quot; apron untied and hanging from one shoulder, the strings dragging near the floor. Sweat soaked through the back of a gray t-shirt in a dark V between the shoulder blades. The ticket rail empty for the first time in six hours, one last ticket still clipped — the final order, already boxed and sitting on the pass, nobody came back for it. The flat top surface scraped half-clean, the left side still blackened with the night&#x27;s residue, the right side showing brushed steel underneath. A squeeze bottle of oil on its side, cap off. The radio on a shelf playing something you can&#x27;t hear through the photo but the cook&#x27;s lips are moving. Red and yellow &quot;Beef Boy&quot; signage visible through the window behind the cook, the neon already switched off, just the ghost of the letters in the dark glass. A mop bucket in the corner, water gray. The fluorescent tube overhead buzzing its last hour, casting everything in a flat, tired light that the flash cuts through. 35mm Kodak Portra 400, flash mixing with the overhead fluorescent, film grain heavy, the steam gone now, the truck quiet for the first time, the kind of clean that only happens when everyone else has left.</div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section>
+    <div class="container">
+        <div class="section-label">Usage</div>
+        <h2 class="section-title">Tips for ChatGPT</h2>
+        <div class="section-line"></div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div class="tip-text"><strong>Start with the style lock</strong> &mdash; paste it as your first message in every new ChatGPT session</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div class="tip-text"><strong>Reference previous images</strong> &mdash; say "same style as the last one but..."</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div class="tip-text"><strong>Push the mess</strong> &mdash; if it looks too clean, say "more grease, more chaos, messier"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div class="tip-text"><strong>Name the brand every time</strong> &mdash; always mention "Beef Boy" so the logo stays consistent</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div class="tip-text"><strong>Call out the flash</strong> &mdash; "harsh on-camera flash with deep shadows" keeps the look raw</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-tagline">Beef Boy Burgers. 15 shots. Flash. Greasy. Every frame branded.</div>
+    <div class="footer-brand">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+</body>
+</html>

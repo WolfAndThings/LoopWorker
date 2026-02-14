@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gutter Bowl &mdash; 15 ChatGPT Prompts | Loop.Worker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E3A;
+            --secondary: #FFD700;
+            --extra: #FF1493;
+            --bg: #0a0a0a;
+            --bg-card: #111111;
+            --bg-code: #0d0d0d;
+            --text: #f5f5f5;
+            --text-muted: #777777;
+            --border: #1e1e1e;
+            --glow-primary: rgba(196, 30, 58, 0.3);
+            --glow-secondary: rgba(255, 215, 0, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+        /* COVER */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 2rem;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 40% 30% at 50% 40%, var(--glow-primary), transparent),
+                radial-gradient(ellipse 30% 25% at 70% 60%, var(--glow-secondary), transparent);
+            animation: coverPulse 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+        @keyframes coverPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .cover h1 {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+            font-size: clamp(4rem, 12vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .cover h1 .line1 { color: var(--primary); display: block; }
+        .cover h1 .line2 { color: var(--secondary); display: block; }
+        .cover-sub {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        .cover-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            max-width: 500px;
+        }
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 2rem auto 0;
+            border-radius: 2px;
+        }
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 0; }
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+        .section-line {
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0;
+        }
+
+        /* BRAND DNA */
+        .dna-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        .dna-block h3 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dna-block ul { list-style: none; }
+        .dna-block li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .dna-block li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .dna-block li strong { color: var(--secondary); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .swatch {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 180px;
+        }
+        .swatch-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.08);
+        }
+        .swatch-info { font-size: 0.8rem; }
+        .swatch-name { font-weight: 500; color: var(--text); }
+        .swatch-hex { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }
+        .swatch-usage { color: var(--text-muted); font-size: 0.7rem; margin-top: 2px; }
+
+        /* Brand Type */
+        .brand-type {
+            font-size: 1.1rem;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+
+        /* STYLE LOCK */
+        .style-lock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+        .style-lock-header {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(255, 215, 0, 0.1));
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .style-lock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .style-lock-header span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .style-lock-body { padding: 1.5rem; }
+        .style-lock-body pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .style-lock-instruction {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        /* PROMPT SECTION */
+        .prompt-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .prompt-section-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .prompt-section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            margin-left: auto;
+        }
+
+        /* Prompt Cards */
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover { border-color: #2a2a2a; }
+        .prompt-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Rubik', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .prompt-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .prompt-body { padding: 1.5rem; }
+        .prompt-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: #bbb;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Prompt Images */
+        .prompt-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            display: block;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+        }
+
+        /* Cover Logo */
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--glow-primary));
+        }
+
+        /* TIPS */
+        .tips-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .tip-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .tip-num {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 24px;
+        }
+        .tip-text { font-size: 0.9rem; color: var(--text); }
+        .tip-text strong { color: var(--secondary); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer-tagline {
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        .footer-brand {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* LOGO GRID */
+        .logo-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+        .logo-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-item::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Logo Warning */
+        .logo-warning {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(214, 40, 40, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(214, 40, 40, 0.2);
+            font-weight: 500;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .dna-grid { grid-template-columns: 1fr; }
+            .swatch { flex: 1 1 100%; }
+            .cover h1 { font-size: 3.5rem; }
+            .container { padding: 0 1.25rem; }
+        }
+
+        /* PRINT */
+        @media print {
+            body { background: #0a0a0a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+            .cover::before { display: none; }
+            section { padding: 2rem 0; }
+            .prompt-card { break-inside: avoid; }
+            .prompt-section-header { break-after: avoid; }
+            .tip-card { break-inside: avoid; }
+            @page { margin: 0.75in; size: letter; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+    <div class="cover-content">
+        <img src="../../logos/GUTTER/gutter_logo_v1.png" alt="Gutter Bowl Logo" class="cover-logo" onerror="this.style.display='none'">
+        <div class="cover-badge">A Complete AI Brand Asset Pack</div>
+        <h1>
+            <span class="line1">Gutter</span>
+            <span class="line2">Bowl</span>
+        </h1>
+        <div class="cover-sub">15 ChatGPT Prompts</div>
+        <div class="cover-divider"></div>
+        <p class="cover-desc">Every shot styled. Every frame branded. A complete visual identity system built for ChatGPT image generation.</p>
+    </div>
+    <div class="cover-footer">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+<!-- BRAND DNA -->
+<section>
+    <div class="container">
+        <div class="section-label">Identity</div>
+        <h2 class="section-title">Brand DNA</h2>
+        <div class="section-line"></div>
+
+        <div class="brand-type">
+            <strong>Retro bowling alley</strong> &mdash; 1970s Americana, neon, friends and strikes
+        </div>
+
+        <h3 style="font-family:'Rubik',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--secondary);margin-bottom:1rem;">Color Palette</h3>
+        <div class="color-grid">
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#C41E3A;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Strike Red</div>
+                    <div class="swatch-hex">#C41E3A</div>
+                    <div class="swatch-usage">Primary &mdash; logo, signage, varsity jackets</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FFD700;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Gold</div>
+                    <div class="swatch-hex">#FFD700</div>
+                    <div class="swatch-usage">Secondary &mdash; trophies, accents, neon</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FFFDD0;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Cream</div>
+                    <div class="swatch-hex">#FFFDD0</div>
+                    <div class="swatch-usage">Lane surfaces, scoring sheets, base</div>
+                </div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-circle" style="background:#FF1493;"></div>
+                <div class="swatch-info">
+                    <div class="swatch-name">Neon Pink</div>
+                    <div class="swatch-hex">#FF1493</div>
+                    <div class="swatch-usage">Neon glow, accent lighting</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dna-grid" style="margin-top:2.5rem;">
+            <div class="dna-block">
+                <h3>Photography Mood</h3>
+                <ul>
+                    <li><strong>Retro</strong> &mdash; 1970s Americana, saturated color</li>
+                    <li><strong>Energetic</strong> &mdash; friends, strikes, celebration</li>
+                    <li><strong>Gritty</strong> &mdash; worn surfaces, flickering neon</li>
+                    <li><strong>Fun</strong> &mdash; bowling is the excuse, hanging out is the point</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Photography Style</h3>
+                <ul>
+                    <li>Kodak Ektachrome, saturated retro</li>
+                    <li>On-camera flash mixed with ambient neon</li>
+                    <li>Film grain, harsh shadows</li>
+                    <li>1970s Americana palette</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Cast / People</h3>
+                <ul>
+                    <li>Young, attractive, mixed groups of friends</li>
+                    <li>Actually bowling and having fun</li>
+                    <li>Varsity jackets, team shirts, vintage fits</li>
+                </ul>
+            </div>
+            <div class="dna-block">
+                <h3>Logo Placement</h3>
+                <div class="logo-items">
+                    <div class="logo-item">Team shirts</div>
+                    <div class="logo-item">Varsity jackets</div>
+                    <div class="logo-item">Caps</div>
+                    <div class="logo-item">Shoe heels</div>
+                    <div class="logo-item">Pint glasses</div>
+                    <div class="logo-item">Neon signs</div>
+                    <div class="logo-item">Napkins</div>
+                    <div class="logo-item">Scoring screens</div>
+                </div>
+                <div class="logo-warning">NEVER place logos on bowling balls or pins</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STYLE LOCK -->
+<section>
+    <div class="container">
+        <div class="section-label">Setup</div>
+        <h2 class="section-title">ChatGPT Style Lock</h2>
+        <div class="section-line"></div>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste this at the start of every ChatGPT session to lock the visual style across all 15 prompts.</p>
+
+        <div class="style-lock-card">
+            <div class="style-lock-header">
+                <div class="style-lock-dot"></div>
+                <div class="style-lock-dot" style="background:var(--secondary);"></div>
+                <div class="style-lock-dot" style="background:var(--text-muted);"></div>
+                <span>style-lock.txt</span>
+            </div>
+            <div class="style-lock-body">
+                <pre>I&#x27;m creating images for a retro bowling alley called &quot;Gutter.&quot;
+
+Visual Style:
+- Shot on Kodak Ektachrome with saturated retro color science
+- On-camera flash mixed with ambient neon glow
+- Film grain visible, 1970s Americana color palette
+- Strike red (#C41E3A) and gold (#FFD700) throughout
+
+Brand Rules:
+- &quot;Gutter&quot; branding appears on: team shirts, varsity jackets, caps, shoe heels, pint glasses, neon signs, napkins
+- NEVER place logos on bowling balls or pins
+- Lived-in bowling alley with worn surfaces
+- Imperfections: scuffed shoes, sticky tables, worn carpet, ring stains, flickering neon
+
+Cast: Young, attractive, mixed groups of friends. Actually bowling and having fun.
+
+Keep this style consistent across all images I request.</pre>
+            </div>
+        </div>
+        <div class="style-lock-instruction">
+            Copy the text above and paste it as your first message in a new ChatGPT conversation. Then send prompts from the sections below one at a time.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROMPTS -->
+<section>
+    <div class="container">
+        <div class="prompt-section-header">
+            <div class="prompt-section-icon">&#127923;</div>
+            <div class="prompt-section-title">Prompts</div>
+            <div class="prompt-section-count">15 prompts</div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">1</div>
+                <div class="prompt-title">The Lane</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_01_THE_LANE.png" alt="The Lane" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Low angle from the gutter itself, on-camera flash + overhead neon, Kodak Ektachrome saturated color. She&#x27;s mid-release, follow-through frozen, bowling shoes planted on worn maple approach marks — locked in, not smiling, eyes down the lane. Red and gold Gutter bowling shoes, a &quot;Gutter&quot; varsity jacket tied around her waist over a cropped white tank top, gold Cuban link chain bouncing mid-throw. Behind her: four friends on the molded plastic seats — one leaning forward watching her form, one mid-sip from a Miller High Life pitcher, one on their phone, one reaching into a nachos boat without looking. The ball already gone, rolling toward the pins lit harsh by overhead fluorescent and neon. Chrome ball return humming, a crack in the fiberglass housing patched with electrical tape. The lane — fifty years of polyurethane worn into grooves where every approach foot lands. Harsh on-camera flash blowing out her tank top, neon pink and gold filling the shadows behind. Ektachrome pushing reds hot, film grain like sandpaper. She looks like she could be on a magazine cover and doesn&#x27;t know it.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">2</div>
+                <div class="prompt-title">The Shoes</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_02_THE_SHOES.png" alt="The Shoes" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Direct flash, Kodak Ektachrome, saturated retro. Someone sitting on the carpeted bench, one foot up, lacing red and gold Gutter bowling shoes like they&#x27;re lacing up for a title fight. The carpet retro geometric — red, gold, brown — worn flat where everyone walks, a seam peeling up at the edge. The shoe leather creased from hundreds of games, &quot;Gutter&quot; logo embossed on the heel tab, the gold leaf half-flaked. Their own shoes kicked under the bench: a pair of beat-up Nike Dunk Lows in red and white, tongues curled from wear, still knotted from being slipped off. A crushed paper scoresheet beside them, pencil marks and cross-outs. The wood-paneled wall behind covered in framed league photos from the &#x27;80s — feathered hair, matching polyester shirts, someone holding a trophy, the glass yellow from cigarette smoke. A gold Casio G-Shock catching the flash on his wrist. She&#x27;s sitting in the same chair those people sat in forty years ago. Harsh flash, specular highlights on the leather, Ektachrome grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">3</div>
+                <div class="prompt-title">The Crew</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_03_THE_CREW.png" alt="The Crew" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide flash shot, slight dutch tilt, Kodak Ektachrome saturated color. Four friends at lane 7 — nobody&#x27;s screaming or posing. She&#x27;s sitting on the chrome ball return with her legs crossed, bowling shoes up, looking directly into camera with the confidence of someone who just threw three strikes in a row. Gold Cuban link, red Gutter team shirt, vintage Levi&#x27;s. He&#x27;s standing behind the console, bowling ball resting against his hip, fingers still in, waiting his turn — Gutter varsity jacket unzipped over nothing, gold chain. Two others in the seats: one lying back eyes closed in a Gutter cap, one holding up a Polaroid they just took, shaking it. The scoring screen above showing a close game, her name in the lead. Nachos getting cold on the console table beside two pitchers of Miller High Life, one dead. They look like a band between takes. On-camera flash blowing out the foreground, neon pink and red filling the shadows, chromatic aberration at the edges, Ektachrome grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">4</div>
+                <div class="prompt-title">The Bar</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_04_THE_BAR.png" alt="The Bar" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot across the bar, on-camera flash bouncing off chrome beer taps and mirrored shelves, Kodak Ektachrome. She&#x27;s sitting at the bar alone, chin in her hand, a gold-rimmed &quot;Gutter&quot; pint glass half-empty, looking directly into camera like the photographer is someone she knows. Red Gutter varsity jacket draped over the back of a red vinyl barstool, the satin lining showing. White tank top, vintage Levi&#x27;s, gold hoops, a thin chain. The bartender behind her mid-pour from a Miller High Life tap, out of focus. The &quot;GUTTER&quot; neon sign buzzing on the wood-paneled wall, the &#x27;T&#x27; flickering, the whole word doubled in the dusty mirror between bottles of well whiskey and a bottle of Campari nobody orders. The bar top worn laminate — fake wood grain, ring stains from decades of pints, someone&#x27;s initials scratched in with a key. A jar of peanuts, shells on the carpet. Through the archway behind: the lanes glowing, silhouettes bowling. Flash mixing with neon, saturated retro color, harsh shadows on the paneling, Ektachrome grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">5</div>
+                <div class="prompt-title">The Alley</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_05_THE_ALLEY.png" alt="The Alley" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide establishing shot from the entrance, on-camera flash filling the foreground, neon lighting the depth, Kodak Ektachrome. Saturday night at Gutter — all sixteen lanes lit, the whole room alive. Shot wide enough that the people are small and the space is everything: the geometric carpet worn to the backing down the center aisle, the acoustic tile ceiling with three tiles missing, the trophy case by the door with fingerprints on the smudged glass, gold trophies catching neon inside. A couple walking in from the entrance — she&#x27;s pulling him by his Gutter varsity jacket collar, laughing, her Nike Dunks fresh, his vintage. Behind them through the glass door: the parking lot, a cherry red 1970 Chevelle SS under the sodium lights, still warm. The &quot;Gutter&quot; neon sign above the desk casting red on the check-in counter. A bored teenager behind the desk, shoe rack behind them — red and gold in every size. The frame deep — sixteen lanes of perspective lines converging to a vanishing point of neon. Flash harsh in the foreground fading into warm neon depth, Ektachrome pushing every color to saturation, film grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">6</div>
+                <div class="prompt-title">The Food</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_06_THE_FOOD.png" alt="The Food" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Overhead angle, direct flash, Kodak Ektachrome saturated retro color. The table mid-session — nachos demolished, cheese congealing into abstract art, a jalapeño on the edge about to fall. A &quot;Gutter&quot; branded fries boat, logo in red, grease soaking through the bottom. Chili cheese fries in another boat, a plastic fork standing up in the cheese. Two pitchers of Miller High Life — one full, one dead and foamy. Four &quot;Gutter&quot; pint glasses at different levels, one with a lipstick print on the rim. The table bowling alley laminate — fake wood grain, cigarette burns from before the ban, someone&#x27;s initials scratched deep, a constellation of ring stains. A crushed scoresheet with cross-outs and an argument in pencil. A bowling ball sitting on the vinyl seat, finger holes up, the surface nicked from the return. A red Gutter varsity jacket thrown over the back, gold satin lining showing. A Polaroid SX-70 camera on the table, two prints face-down still developing. Nobody in the frame — just the evidence. Harsh flash, neon glow from above, Ektachrome grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">7</div>
+                <div class="prompt-title">The Score</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_07_THE_SCORE.png" alt="The Score" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from below the scoring screen, on-camera flash, Kodak Ektachrome. Two friends at the console — she&#x27;s pointing at the screen, one eyebrow raised, calling out a mismark. He&#x27;s shaking his head, bowling ball on his hip, fingers still in the holes, not having it. The argument isn&#x27;t angry — it&#x27;s the kind where both people are trying not to laugh. The screen casting red and gold light on their faces, names and scores visible. She&#x27;s in a Gutter team shirt and vintage Levi&#x27;s, gold chain, red Nikes color-coordinated with the brand. He&#x27;s in the varsity jacket, Gutter cap backwards. Behind them, the next lane: someone mid-approach caught in a motion blur. The console table cluttered: phones, a demolished hot dog wrapper, a &quot;Gutter&quot; napkin as a coaster under a sweating pint, a pair of Ray-Ban Wayfarers folded. They look like they should be photographed. Flash mixing with screen glow, harsh shadows, Ektachrome grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">8</div>
+                <div class="prompt-title">The Trophy</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_08_THE_TROPHY.png" alt="The Trophy" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Direct flash, shallow depth of field, Kodak Ektachrome. She&#x27;s holding a gold league trophy at her side, one hand, not above her head — like she&#x27;s done this before and doesn&#x27;t need the crowd. Looking into camera, no smile, just knowing. Red Gutter varsity jacket, the satin catching the flash like liquid, gold script &quot;Gutter&quot; across the back visible in the trophy case reflection behind her. Her team at the front desk — one leaning on the counter counting cash for the bill, one shooting a Polaroid, one already in their own shoes: Jordan 1 Breds, red and black, color-coordinated without trying. The trophy has &quot;Gutter League&quot; engraved slightly crooked on the base, a tiny bowler figurine on top. The trophy case behind them: dusty, one shelf tilted, trophies from &#x27;78 to last month crammed together. A Polaroid SX-70 on the counter, the last photo still developing, the chemistry still swirling. Harsh flash, neon glow, Ektachrome grain. She doesn&#x27;t need to celebrate — the jacket, the trophy, the shoes all do the talking.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">9</div>
+                <div class="prompt-title">The Exterior</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_09_THE_EXTERIOR.png" alt="The Exterior" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Night shot, on-camera flash in the foreground, neon from above, Kodak Ektachrome. Gutter from the parking lot at 11pm — low-slung, glowing, the only thing alive on the block. The massive neon sign on the flat roof: &quot;GUTTER&quot; in red with a gold bowling pin, the &#x27;R&#x27; flickering every few seconds, the whole word reflecting in the wet asphalt below. The entrance spilling warm light onto cracked sidewalk. A girl walking in alone, hands in her Gutter varsity jacket pockets, gold chain catching the neon, looking straight ahead — she knows exactly where she&#x27;s going. Through the glass doors: the lanes lit up, someone&#x27;s silhouette mid-approach. The parking lot: a cherry red 1969 Camaro SS in the first spot, chrome bumper catching the neon, a bumper sticker on the back glass. A vintage Coke machine glowing red by the entrance, the coin slot jammed. The building chipping at the corners, stucco patched twice, but not dead — lived-in for fifty years and not going anywhere. Flash catching wet asphalt, chromatic flares from the sign, Ektachrome pushing the reds nuclear, film grain.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">10</div>
+                <div class="prompt-title">The Jacket</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_10_THE_JACKET.png" alt="The Jacket" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Shot from behind, on-camera flash at night, Kodak Ektachrome. Someone walking across the parking lot after closing — 1am, the last one out. A red Gutter varsity jacket, the gold script &quot;GUTTER&quot; across the back catching every photon of the flash, the chenille letters raised, the satin rippling with each step. Bowling ball bag over one shoulder, gold league trophy under the other arm. Still in the Gutter bowling shoes — doesn&#x27;t care, walking on asphalt. Vintage Levi&#x27;s, gold chain visible at the collar. The neon sign still on behind them casting a long red shadow ahead on wet blacktop, the puddles reflecting red and gold. The building going dark except the sign and one back office light where someone&#x27;s counting the register. The cherry Camaro the only car left in the lot, driver door open, interior light on, waiting. A crushed PBR can by the curb. The best night of the week, every week. Harsh flash, neon spill, Ektachrome grain. They look like a movie poster walking away from everything.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">11</div>
+                <div class="prompt-title">The Neon</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_11_THE_NEON.png" alt="The Neon" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Tight close-up, on-camera flash mixed with the sign&#x27;s own glow, Kodak Ektachrome saturated retro color. The &quot;GUTTER&quot; neon sign filling the entire frame — red glass tubes bent into block letters, the gas inside pulsing, the &#x27;U&#x27; slightly dimmer than the rest, running hot. The black metal transformer box bolted to the sign&#x27;s backing plate, a low electrical hum you can almost hear through the image, a thin cable patched with black tape where someone fixed it in 1994 and never came back. Three moths and a June bug circling the &#x27;G&#x27;, wings caught mid-flutter by the flash, casting tiny shadows on the stucco wall behind. The wall itself — painted cream once, now yellowed and cracking, a water stain running from the roofline like a river delta. Below the sign: a chrome rain gutter bolted to the fascia, wet from condensation, the red neon doubled in its surface — the word &quot;GUTTER&quot; reflected and warped in brushed chrome, broken into streaks where the metal is dented. A single puddle on the flat roof edge catching the gold accent tube that outlines the bowling pin logo, the water surface trembling from the transformer&#x27;s vibration. The flash hitting the glass tubes creates specular pinpoints — tiny suns along every letter. Ektachrome pushing the reds to the edge of the emulsion, the gold tube almost white-hot, neon pink accent bleeding into the shadows at the edges. Heavy film grain, chromatic aberration in the corners. The sign has been on every night for forty years and nobody looks up anymore.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">12</div>
+                <div class="prompt-title">The Roll</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_12_THE_ROLL.png" alt="The Roll" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Low angle from lane level, on-camera flash freezing the foreground, Kodak Ektachrome saturated retro color. A marbled red bowling ball mid-roll down lane 9, motion blur streaking the surface into a comet of color — the finger holes spinning, the lane oil catching the flash in a long wet smear behind it. The lane arrows in sharp focus: red and gold triangles embedded in fifty-year-old maple, the wood grain visible between coats of polyurethane worn thin by a million approaches. Forty feet ahead, the ten pins lit harsh by overhead fluorescent — white and red striped, standing in their tight triangle, the pin deck machinery lurking in shadow behind them. In the foreground, cutting into the bottom of the frame: his follow-through arm extended, fingers still spread from the release, the wrist cocked, a red Gutter wristband dark with sweat. The sleeve of a gold satin Gutter varsity jacket pushed up past his elbow. His bowling shoe planted on the approach, the toe of the sliding foot just past the foul line, a scuff mark on the maple where a thousand shoes have done the same thing. The ball return to the left humming, the chrome housing vibrating, a crack in the fiberglass patched with electrical tape and a &quot;Gutter&quot; sticker someone slapped on. His friends behind him — out of focus shapes on the molded plastic seats, one leaning forward, one mid-sip. On-camera flash blowing out the lane surface, neon pink and gold from the overhead signs filling the shadows at the edges, Ektachrome grain like fine sand across the whole frame.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">13</div>
+                <div class="prompt-title">The Arcade</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_13_THE_ARCADE.png" alt="The Arcade" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot from the hip, on-camera flash competing with CRT glow, Kodak Ektachrome saturated retro color. The arcade corner of Gutter — tucked past the bar, three vintage cabinets pushed against wood-paneled walls: a Galaga with a cracked bezel, a Ms. Pac-Man with a cigarette burn on the control panel, a Street Fighter II Turbo with both joysticks worn to bare metal. She&#x27;s playing Galaga, leaning into the cabinet, her face lit blue-white from the screen — eyes locked, jaw set, fingers hammering the fire button. Neon pink and red glow washing across her cheekbones from the &quot;GUTTER&quot; sign mounted above the cabinets, the light mixing with the CRT to turn her skin electric. Red Gutter team shirt, sleeves rolled, a gold chain swinging forward as she leans in. Three quarters stacked on the glass marquee — next games claimed. A half-empty &quot;Gutter&quot; pint glass on the cabinet edge, a ring of condensation on the glass top, a &quot;Gutter&quot; coaster stuck to the bottom of the glass. The carpet beneath her bowling shoes: that geometric pattern in red, gold, and brown, matted flat, a French fry ground into the pile. Behind her, the lanes visible through the archway — someone mid-approach, frozen in the background blur. A kid waiting his turn, leaning against the Ms. Pac-Man, arms crossed, watching her score climb. The flash catching the glass of every screen, the CRT scanlines visible, Ektachrome pushing the arcade glow into oversaturated greens and blues against the warm red neon. Heavy grain, the whole corner feeling like a pocket universe inside the alley.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">14</div>
+                <div class="prompt-title">The Date</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_14_THE_DATE.png" alt="The Date" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Medium shot from the side, on-camera flash softened by distance, Kodak Ektachrome saturated retro color. A couple at lane 3 on a Tuesday night — the quiet night, half the lanes dark. He&#x27;s standing behind her at the approach, teaching her to bowl, his hands over hers on a gold-swirl house ball, guiding her fingers into the holes. Her back against his chest, both of them laughing at how bad this instruction is. She&#x27;s in his red Gutter varsity jacket three sizes too big, the sleeves past her fingertips, the gold &quot;Gutter&quot; script across her shoulder blades. Vintage Levi&#x27;s cuffed above the red and gold bowling shoes she picked because they matched the jacket. He&#x27;s in a white pocket tee, gold chain, Gutter cap backwards, his own bowling shoes scuffed from actually knowing how to play. The intimacy of a shared hobby nobody&#x27;s good at — the ball too heavy, the shoes too slippery, the form all wrong, and none of it mattering. Behind them: two &quot;Gutter&quot; pint glasses on the console, one barely touched, one empty. A basket of curly fries getting cold. The scoring screen showing her name with three gutter balls and his with a spare he&#x27;s pretending was lucky. Their real shoes — her white Nike Air Force 1s and his red Jordan 1 Mids — kicked together under the seats like they already belong in the same place. Neon pink washing the lane from the overhead sign, the flash catching the satin jacket, Ektachrome grain softening everything into a memory that hasn&#x27;t happened yet.</div>
+            </div>
+        </div>
+
+        
+
+<div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-number">15</div>
+                <div class="prompt-title">The Lot</div>
+            </div>
+            <div class="prompt-body">
+                <img src="../../generated_images/chatgpt/GUTTER/GUTTER_15_THE_LOT.png" alt="The Lot" class="prompt-image" onerror="this.style.display='none'">
+                <div class="prompt-text">Wide shot, on-camera flash reaching into the middle distance, Kodak Ektachrome saturated retro color. The Gutter parking lot at closing — 12:47am, the last stragglers filtering out. Three muscle cars angled into the front spots: a cherry red &#x27;69 Camaro SS, a gold &#x27;70 Chevelle, a black &#x27;71 Plymouth Barracuda — all of them catching the neon in their chrome bumpers and polished hoods, the &quot;GUTTER&quot; sign reflected and stretched across curved metal like a funhouse mirror. Puddles from an earlier rain scattered across the cracked asphalt, each one a little mirror — the red neon sign doubled in every pool, the gold bowling pin logo wavering when a breeze hits. Someone leaning on the Camaro&#x27;s front fender, arms crossed, red Gutter varsity jacket collar popped, bowling ball bag at their feet, a gold league trophy balanced on the hood. Looking out at the street, not the camera — the expression of someone replaying every frame of the night. A lit cigarette between two fingers, the ember catching the flash. The building behind: low-slung stucco, the massive &quot;GUTTER&quot; neon blazing on the roofline, the &#x27;R&#x27; still flickering, the red washing down the facade and across the lot. The glass front doors closing — the last employee visible inside, flipping chairs onto tables. A sodium parking lot light buzzing overhead, the orange competing with the neon red, creating split-tone shadows on the asphalt. A crushed PBR tall boy in the gutter of the curb. The night winding down but nobody wanting to leave. Flash harsh on the foreground chrome, neon spill softening into the distance, Ektachrome pushing every red to the breaking point, heavy film grain across the whole frame.</div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section>
+    <div class="container">
+        <div class="section-label">Usage</div>
+        <h2 class="section-title">Tips for ChatGPT</h2>
+        <div class="section-line"></div>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-num">1</div>
+                <div class="tip-text"><strong>Start with the style lock</strong> &mdash; paste it as your first message in every new ChatGPT session</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">2</div>
+                <div class="tip-text"><strong>Mix flash and neon</strong> &mdash; "on-camera flash with ambient neon glow" is the signature look</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">3</div>
+                <div class="tip-text"><strong>Keep it retro</strong> &mdash; if it looks too modern, say "more 1970s, more saturated, worn surfaces"</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">4</div>
+                <div class="tip-text"><strong>Name the brand</strong> &mdash; always mention "Gutter" on shirts, jackets, signs to keep branding consistent</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-num">5</div>
+                <div class="tip-text"><strong>Embrace the grit</strong> &mdash; scuffed shoes, sticky tables, ring stains, flickering neon makes it real</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-tagline">Gutter Bowl. 15 shots. Neon. Strikes. Every frame branded.</div>
+    <div class="footer-brand">Loop.Worker &mdash; AI Brand Photography System</div>
+</div>
+
+</body>
+</html>
