@@ -1,0 +1,4 @@
+order,sku,product_name,price_usd,visibility,delivery_file,slug_recommendation,purpose
+1,LW-FREE-BEEFBOY,LoopWorker Free Pack - BEEFBOY,0,unlisted,stan_store/sellable_pack/free_claim_uploads/BEEFBOY_FREE_CLAIM.zip,free-beefboy,Single free claim destination for BEEFBOY keyword
+2,LW-FREE-DRIP,LoopWorker Free Pack - DRIP,0,unlisted,stan_store/sellable_pack/free_claim_uploads/DRIP_FREE_CLAIM.zip,free-drip,Single free claim destination for DRIP keyword
+3,LW-FREE-STAY,LoopWorker Free Pack - STAY,0,unlisted,stan_store/sellable_pack/free_claim_uploads/STAY_FREE_CLAIM.zip,free-stay,Single free claim destination for STAY keyword
