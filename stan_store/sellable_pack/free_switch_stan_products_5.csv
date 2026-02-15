@@ -1,0 +1,6 @@
+order,sku,product_name,price_usd,visibility,delivery_file,slug_recommendation
+1,LW-FREE-BEEFBOY,LoopWorker Free Pack - BEEFBOY,0,unlisted,stan_store/sellable_pack/free_switch_uploads/BEEFBOY_FREE_READY.zip,free-beefboy
+2,LW-FREE-DRIP,LoopWorker Free Pack - DRIP,0,unlisted,stan_store/sellable_pack/free_switch_uploads/DRIP_FREE_READY.zip,free-drip
+3,LW-FREE-STAY,LoopWorker Free Pack - STAY,0,unlisted,stan_store/sellable_pack/free_switch_uploads/STAY_FREE_READY.zip,free-stay
+4,LW-FREE-SOFTGOODS,LoopWorker Free Pack - SOFTGOODS,0,unlisted,stan_store/sellable_pack/free_switch_uploads/SOFTGOODS_FREE_READY.zip,free-softgoods
+5,LW-FREE-GUTTER,LoopWorker Free Pack - GUTTER,0,unlisted,stan_store/sellable_pack/free_switch_uploads/GUTTER_FREE_READY.zip,free-gutter
