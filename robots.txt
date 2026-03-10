@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://services.loopworker.com/sitemap.xml
+Sitemap: https://services.loopworker.com/image-sitemap.xml
