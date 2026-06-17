@@ -17,17 +17,19 @@
   <meta name="twitter:description" content="Public signals, named competitors, and a clear recommendation before your next law-firm growth bet." />
   <style>
     :root {
-      --bg: #070807;
-      --ink: #f4f1ea;
-      --muted: #a8aaa2;
-      --quiet: #75786f;
-      --line: rgba(244, 241, 234, 0.12);
-      --panel: #10120f;
-      --panel-2: #151712;
-      --signal: #b9ff66;
-      --amber: #f0b34c;
-      --red: #ff695f;
-      --cyan: #77d7d2;
+      --bg: #07070C;
+      --ink: #FAFAFC;
+      --muted: #C7C7D1;
+      --quiet: #8A8A98;
+      --line: rgba(255, 255, 255, 0.10);
+      --panel: #0F0F1A;
+      --panel-2: #14141F;
+      --signal: #818CF8;
+      --purple: #A855F7;
+      --pink: #EC4899;
+      --cyan: #22D3EE;
+      --grad-cta: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      --grad-hero: linear-gradient(135deg, #6366F1 0%, #A855F7 52%, #EC4899 100%);
       --max: 1180px;
     }
 
@@ -36,8 +38,9 @@
     body {
       margin: 0;
       background:
-        linear-gradient(180deg, rgba(185, 255, 102, 0.06), transparent 360px),
-        linear-gradient(90deg, rgba(119, 215, 210, 0.05), transparent 48%),
+        radial-gradient(ellipse 1100px 700px at 15% 0%, rgba(99,102,241,0.20), transparent 60%),
+        radial-gradient(ellipse 900px 600px at 85% 20%, rgba(168,85,247,0.14), transparent 65%),
+        radial-gradient(ellipse 600px 400px at 50% 100%, rgba(236,72,153,0.08), transparent 70%),
         var(--bg);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -53,7 +56,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(7, 8, 7, 0.86);
+      background: rgba(7, 7, 12, 0.86);
       backdrop-filter: blur(16px);
     }
 
@@ -116,9 +119,10 @@
     }
 
     .button.primary {
-      background: var(--signal);
-      border-color: var(--signal);
-      color: #11150b;
+      background: var(--grad-cta);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.10) inset, 0 10px 30px -12px #6366F1;
     }
 
     .button:hover { transform: translateY(-1px); }
@@ -143,8 +147,8 @@
       align-items: center;
       gap: 10px;
       color: var(--signal);
-      border: 1px solid rgba(185, 255, 102, 0.28);
-      background: rgba(185, 255, 102, 0.07);
+      border: 1px solid rgba(129, 140, 248, 0.34);
+      background: rgba(99, 102, 241, 0.12);
       padding: 7px 10px;
       border-radius: 999px;
       font-size: 13px;
@@ -156,7 +160,7 @@
       height: 7px;
       border-radius: 50%;
       background: var(--signal);
-      box-shadow: 0 0 18px rgba(185, 255, 102, 0.8);
+      box-shadow: 0 0 18px rgba(129, 140, 248, 0.8);
     }
 
     h1 {
@@ -287,8 +291,8 @@
       margin-top: 14px;
       border-left: 3px solid var(--signal);
       padding: 12px 14px;
-      background: rgba(185, 255, 102, 0.07);
-      color: #e8f7db;
+      background: rgba(99, 102, 241, 0.12);
+      color: #ECEEFF;
       font-size: 14px;
     }
 
@@ -451,8 +455,8 @@
     }
 
     .featured {
-      border-color: rgba(185, 255, 102, 0.42);
-      background: linear-gradient(180deg, rgba(185,255,102,0.08), rgba(255,255,255,0.035));
+      border-color: rgba(129, 140, 248, 0.42);
+      background: linear-gradient(180deg, rgba(99,102,241,0.14), rgba(255,255,255,0.035));
     }
 
     .quote {
@@ -498,14 +502,14 @@
       grid-template-columns: 1fr auto;
       gap: 24px;
       align-items: center;
-      border: 1px solid rgba(185, 255, 102, 0.32);
-      background: rgba(185, 255, 102, 0.07);
+      border: 1px solid rgba(129, 140, 248, 0.34);
+      background: linear-gradient(135deg, rgba(99,102,241,0.16), rgba(168,85,247,0.10));
       border-radius: 8px;
       padding: 28px;
     }
 
     .final-box h2 { font-size: clamp(30px, 4vw, 54px); }
-    .final-box p { color: #d8e7ce; margin: 12px 0 0; max-width: 700px; }
+    .final-box p { color: #E5E7FF; margin: 12px 0 0; max-width: 700px; }
 
     footer {
       color: var(--quiet);
